@@ -1,13 +1,3 @@
-var webinarSchedule = [
-    {"date": "9/16/2022","time": "08:30:00 PM"},
-    {"date": "9/18/2022","time": "05:30:00 PM"},
-    {"date": "9/18/2022","time": "08:30:00 PM"},
-    {"date": "9/19/2022","time": "08:30:00 PM"},
-    {"date": "9/20/2022","time": "08:30:00 PM"},
-    {"date": "9/21/2022","time": "08:30:00 PM"},
-    {"date": "9/22/2022","time": "08:30:00 PM"}
-];
-
 const timerState = {
     currentDate: '',
     nextDate: '',
@@ -32,7 +22,7 @@ function nextWebinar(currentDate, currentWebTime){
 };
 
 function initStates(){
-    timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+    timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: 'IST' });
     timerState.currentDateSec = Date.parse(timerState.currentDate);
     timerState.nextDate = nextWebinar(timerState.currentDate.split(',')[0], timerState.currentDateSec);
     if (timerState.nextDate !== '') {
