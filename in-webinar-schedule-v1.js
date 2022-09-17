@@ -85,7 +85,7 @@ function TimerHandler(){
         if (timerState.nextDate === '') {
             clearInterval(webinarTimer);
         }
-        timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+        timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: 'IST' });
         timerState.currentDateSec = Date.parse(timerState.currentDate);
 
         const distanceCount = timerState.nextDateSec - timerState.currentDateSec;
