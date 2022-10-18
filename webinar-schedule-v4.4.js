@@ -4,6 +4,7 @@ const timerState = {
     currentDateSec: '',
     nextDateSec: '',
 };
+var timerVisibility = true;
 
 function nextWebinar(currentDate, currentWebTime){
     let nextWebinarDate = '';
@@ -96,6 +97,7 @@ function TimerHandler(){
         if (timerState.nextDateSec == "" || timerState.nextDateSec == null){
             document.querySelector('.webinar__timer').style.display = 'none';
             document.querySelector('.webinar__nav-timer').style.display = 'none';
+            timerVisibility = false;
             return;
         }
         
@@ -140,10 +142,12 @@ $( document ).ready(function() {
 // below element selectors will only run for the home page.
 const stickyTimerHandler = () => {
     window.onscroll = () => {
-            if (scrollY > document.querySelector('#numberRoller').offsetTop - 140) {
-                document.querySelector('.webinar__nav-timer').style.display = 'flex';
-            } else {
-                document.querySelector('.webinar__nav-timer').style.display = 'none';
+            if(timerVisibility){
+                if (scrollY > document.querySelector('#numberRoller').offsetTop - 140) {
+                    document.querySelector('.webinar__nav-timer').style.display = 'flex';
+                } else {
+                    document.querySelector('.webinar__nav-timer').style.display = 'none';
+                }
             }
     };
 };
