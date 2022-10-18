@@ -4,7 +4,6 @@ const timerState = {
     currentDateSec: '',
     nextDateSec: '',
 };
-var timerVisibility = true;
 
 function nextWebinar(currentDate, currentWebTime){
     let nextWebinarDate = '';
@@ -100,8 +99,8 @@ function TimerHandler(){
             if(document.querySelector('.webinar__timer') != null){
                 document.querySelector('.webinar__timer').style.display = 'none';
             }
-
-            timerVisibility = false;
+            
+            $('.webinar__timer-nav').css("display","none");
             return;
         }
         
@@ -152,8 +151,5 @@ const stickyTimerHandler = () => {
                 } else {
                     document.querySelector('.webinar__nav-timer').style.display = 'none';
                 }
-            if(!timerVisibility){
-                document.querySelector('.webinar__nav-timer').style.display = 'none';
-            }
     };
 };
