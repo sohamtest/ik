@@ -93,8 +93,12 @@ function TimerHandler(){
 
         const distanceCount = timerState.nextDateSec - timerState.currentDateSec;
         
-        console.log("nextDateSec: "+timerState.nextDateSec);
-        console.log("distanceCount: "+distanceCount);
+        if (timerState.nextDateSec == "" || timerState.nextDateSec == null){
+            return;
+        }
+        
+        //console.log("nextDateSec: "+timerState.nextDateSec);
+        //console.log("distanceCount: "+distanceCount);
 
         const day = Math.floor(distanceCount / (1000 * 60 * 60 * 24));
         const hrs = Math.floor((distanceCount % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
