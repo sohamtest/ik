@@ -94,6 +94,8 @@ function TimerHandler(){
         const distanceCount = timerState.nextDateSec - timerState.currentDateSec;
         
         if (timerState.nextDateSec == "" || timerState.nextDateSec == null){
+            document.querySelector('.webinar__timer').style.display = 'none';
+            document.querySelector('.webinar__nav-timer').style.display = 'none';
             return;
         }
         
