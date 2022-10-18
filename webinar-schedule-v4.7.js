@@ -147,12 +147,13 @@ $( document ).ready(function() {
 const stickyTimerHandler = () => {
     window.onscroll = () => {
             if(document.querySelector('.webinar__nav-timer') == null) return;
-            if(timerVisibility){
                 if (scrollY > document.querySelector('#numberRoller').offsetTop - 140) {
                     document.querySelector('.webinar__nav-timer').style.display = 'flex';
                 } else {
                     document.querySelector('.webinar__nav-timer').style.display = 'none';
                 }
+            if(!timerVisibility){
+                document.querySelector('.webinar__nav-timer').style.display = 'none';
             }
     };
 };
