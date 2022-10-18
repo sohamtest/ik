@@ -101,6 +101,8 @@ function TimerHandler(){
             }
             
             $('.webinar__timer-nav').css("display","none");
+            $('.webinar__timer').css("display","none");
+            
             return;
         }
         
