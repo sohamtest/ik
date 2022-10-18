@@ -61,7 +61,7 @@ function unitaryCountHandler(){
 
 function updateTimerUI(day, hrs, min, sec){
   
-    console.log("day: "+day+"| hrs: "+hrs+"| min: "+min+"| sec: "+sec);
+   // console.log("day: "+day+"| hrs: "+hrs+"| min: "+min+"| sec: "+sec);
   
     document.querySelectorAll('.webinar__timer--days > .webinar__timer--count').forEach((timer) => {
         timer.textContent = day;
@@ -92,7 +92,9 @@ function TimerHandler(){
         timerState.currentDateSec = Date.parse(timerState.currentDate);
 
         const distanceCount = timerState.nextDateSec - timerState.currentDateSec;
-        // console.log(distanceCount);
+        
+        console.log("nextDateSec: "+timerState.nextDateSec);
+        console.log("distanceCount: "+distanceCount);
 
         const day = Math.floor(distanceCount / (1000 * 60 * 60 * 24));
         const hrs = Math.floor((distanceCount % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
