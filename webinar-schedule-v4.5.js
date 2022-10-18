@@ -63,6 +63,8 @@ function unitaryCountHandler(){
 function updateTimerUI(day, hrs, min, sec){
   
    // console.log("day: "+day+"| hrs: "+hrs+"| min: "+min+"| sec: "+sec);
+    
+    if(document.querySelector('.webinar__timer--days') == null) return;
   
     document.querySelectorAll('.webinar__timer--days > .webinar__timer--count').forEach((timer) => {
         timer.textContent = day;
@@ -142,6 +144,8 @@ $( document ).ready(function() {
 // below element selectors will only run for the home page.
 const stickyTimerHandler = () => {
     window.onscroll = () => {
+            if(document.querySelector('.webinar__timer--days') == null) return;
+        
             if(timerVisibility){
                 if (scrollY > document.querySelector('#numberRoller').offsetTop - 140) {
                     document.querySelector('.webinar__nav-timer').style.display = 'flex';
