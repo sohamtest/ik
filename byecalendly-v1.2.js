@@ -1,5 +1,5 @@
 $(document).ready(function() {
-var int_phone3,registration_type;
+var int_phone3,registration_type="calendly";
 
   $('.webinar-lightbox-close').click(function(e) {
   		$('.webinar__lightbox').css('display','none');
@@ -8,7 +8,7 @@ var int_phone3,registration_type;
   
  const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   
-  let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=USA&program=Backend&timezone="+t.timezone;
+  let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=USA&program=Backend&timezone="+v_timezone;
   
   let xhr = new XMLHttpRequest();
     xhr.open('GET',api_url,true);
