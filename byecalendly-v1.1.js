@@ -1,16 +1,12 @@
 $(document).ready(function() {
-	var int_phone3,registration_type;
-	
-  $('.btn-bye-calendly').click(function(e) {
-      $('body').css('overflow','hidden');
-  });
-  
+var int_phone3,registration_type;
+
   $('.webinar-lightbox-close').click(function(e) {
   		$('.webinar__lightbox').css('display','none');
       $('body').css('overflow','auto');
   });
   
- 	const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+ const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   
   let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=USA&program=Backend&timezone="+t.timezone;
   
