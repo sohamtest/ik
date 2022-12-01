@@ -1,7 +1,5 @@
 $(document).ready(function() {
 var int_phone3;
-var registration_type="calendly";
-	
   $('.webinar-lightbox-close').click(function(e) {
   		$('.webinar__lightbox').css('display','none');
       $('body').css('overflow','auto');
