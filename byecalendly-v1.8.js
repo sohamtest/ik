@@ -134,11 +134,11 @@ var int_phone3;
     				$('.wr__event-end-time').val(eendtime);
             $('.wr__invitee-start-time').val($("input[name='start-date']:checked").data('invitee_starttime'));
    					$('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
-            //$('.webinar__loadingbar').show();
+            $('.webinar__loadingbar').show();
             $('.webinar__registration-form2').submit();
             setTimeout(function(){
               location.href = finalurl;
-            }, 400);
+            }, 1000);
         }
      });
 });
