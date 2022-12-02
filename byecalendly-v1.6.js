@@ -7,8 +7,9 @@ var int_phone3;
   
  const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   
-  let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=USA&program=Backend&timezone="+v_timezone;
-  
+  let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=USA&program=Backend111&timezone="+v_timezone;
+ // let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=USA&program=Backend&timezone="+v_timezone;
+	
   let xhr = new XMLHttpRequest();
     xhr.open('GET',api_url,true);
     xhr.setRequestHeader("Authorization","1Cgx6oYXkOlWkNDn7_tXO");
