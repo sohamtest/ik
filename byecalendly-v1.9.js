@@ -7,7 +7,7 @@ var int_phone3;
   
  const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   
- let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=USA&program=Backend&timezone="+v_timezone;
+ let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=IND&program=Backend&timezone="+v_timezone;
 	
   let xhr = new XMLHttpRequest();
     xhr.open('GET',api_url,true);
@@ -23,7 +23,12 @@ var int_phone3;
     xhr.onload = function(){
       if(this.status == 200){
         let resobj = JSON.parse(this.response);
-        registration_type = "byecalendly";
+	if(resobj.length == 0){
+		registration_type = "calendly";
+	}else{
+		registration_type = "byecalendly";
+	}
+        
         for (i=0;i<resobj.length;i++){
           var hdate = resobj[i].weekday +", "+ resobj[i].day + " " + t_months[parseInt(resobj[i].month)-1] + " "+ resobj[i].year + " | " + resobj[i].hour +":" + resobj[i].minute +" "+resobj[i].am_or_pm;
 					var radiohtml = '<label class="select-webinar-slot w-radio"><input type="radio" name="start-date" value="'+ resobj[i].start_time +'" data-endtime="'+resobj[i].end_time+'" data-invitee_starttime="'+ resobj[i].invitee_start_time +'" data-invitee_endtime="'+ resobj[i].invitee_end_time +'" data-name="'+ resobj[i].start_time +'" class="w-form-formradioinput select-webinar-radio-btn w-radio-input"><span class="w-form-label" for="start-date-'+i+'">'+hdate+' '+ tz +'</span></label>';
