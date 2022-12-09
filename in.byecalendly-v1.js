@@ -66,7 +66,7 @@ var int_phone3;
 
      $('.bc__btn-select-webinar-slot').click(function(e) {
   			e.preventDefault();
-      	setHiddenFields();
+      	//setHiddenFields();
        
         let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
         $("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
