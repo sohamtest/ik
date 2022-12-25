@@ -28,7 +28,7 @@ var int_phone3;
 	}else{
 		registration_type = "byecalendly";
 	}
-        let nslots = (resobj.length > 6) ? 6 : resobj.length;
+        let nslots = (resobj.length > 4) ? 4 : resobj.length;
         
         for (i=0;i<nslots;i++){
           var hdate = resobj[i].weekday +", "+ resobj[i].day + " " + t_months[parseInt(resobj[i].month)-1] + " "+ resobj[i].year + " | " + resobj[i].hour +":" + resobj[i].minute +" "+resobj[i].am_or_pm;
