@@ -128,39 +128,43 @@ var int_phone3;
    });
   
   $('.bc__btn-select-webinar-slot-v2').click(function(e) {
-  			e.preventDefault();
+  	e.preventDefault();
       	setHiddenFields();
        
-        let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
-        $("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
-        $(".tno1").val(fullphonenumber3);
+        //let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
+        //$("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
+        //$(".tno1").val(fullphonenumber3);
         
         $( ".full-name,.email" ).keypress(function() {
              $('.full-name-error,.email-id-error').addClass('hide');
           });
     	
         $( ".full-name, .email" ).focus(function() {
-             $('.full-name-error,.phone-error').addClass('hide');
-    		});
+             $('.full-name-error,.email-id-error').addClass('hide');
+    	});
         
         //let active_visit = read_cookie("v_latest");
         let name_regex = new RegExp("^[a-zA-Z ]+$");
         let email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        let phone_regex = /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/gm;
+        //let phone_regex = /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/gm;
                 
         if( 
             ($(".full-name").val().length == 0) &&
             ($(".email").val().length == 0)){
              $('.full-name-error,.email-id-error').removeClass('hide');
-        }
-    		else if (!name_regex.test($(".full-name").val()) || $(".full-name").val().length == 0){
+        }else if (!name_regex.test($(".full-name").val()) || $(".full-name").val().length == 0){
             $('.full-name-error').removeClass('hide');
         }else if (!email_regex.test($(".email").val()) || $(".email").val().length == 0){
         	$('.email-id-error').removeClass('hide');
         }else{
           $('.webinar__loadingbar').css("display","flex");
-          $('.wr__fullname').val($(".full-name").val());
+	  let fullname = $(".full-name").val();
+	  $('.wr__firstname').val(fullname.substring(0, fullname.indexOf(' ')));
+          $('.wr__lastname').val(fullname.substring(fullname.indexOf(' ') + 1));
+		
+          $('.wr__fullname').val();
           $('.wr__email').val($(".email").val());
+		
           dataLayer.push({
               'event': 'new_webinar_registration_form_submitted',
               'webinar_name': (document.querySelector('.webinar__lightbox-title').innerHTML)
@@ -179,62 +183,25 @@ var int_phone3;
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
    				$('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
    });
- 
-  $('.bc__btn-2nd-step-v2').click(function(e) {
-     		e.preventDefault();
-        if($("input:radio[name='start-date']").is(":checked")) {
-            let estarttime = $('input[name="start-date"]:checked').val();
-            let eendtime = $('input[name="start-date"]:checked').data('endtime');
-            let utmm = visitor_id+":"+v_country;
-            let sf_uuid= v_timezone +":ik"+cta_lp+":ik"+getCookie("ik-landingpage-v2");
-            let utmstring = "?assigned_to=Interview Kickstart&invitee_first_name="+$('.wr__firstname').val()+"&invitee_last_name="+$('.wr__lastname').val()+"&invitee_email="+$('.wr__email').val()+"&answer_1="+$('.wr__phone').val()+"&event_start_time="+estarttime+"&event_end_time="+eendtime+"&utm_medium="+utmm+"&salesforce_uuid="+sf_uuid;
-            let finalurl = "https://www.interviewkickstart.com/signup-final-step"+utmstring;
-            $('.wr__event-start-time').val(estarttime);
-    				$('.wr__event-end-time').val(eendtime);
-            $('.wr__invitee-start-time').val($("input[name='start-date']:checked").data('invitee_starttime'));
-   					$('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
-            
-            $( ".phone" ).keypress(function() {
-               $('.phone-error').addClass('hide');
-            });
-
-            $( ".phone" ).focus(function() {
-                $('.phone-error').addClass('hide');
-            });
-          
-            if(!phone_regex.test($(".phone").val()) || $(".phone").val().length == 0){
-              $('.phone-error').removeClass('hide');
-              return;
-            }
-            
-            $('.webinar__loadingbar').show();
-            $('.webinar__registration-form2').submit();
-            
-            bake_cookie("v_history","");
-            bake_cookie("v_latest","");
-          
-            if(singlesignup != true){
-              setTimeout(function(){
-                location.href = finalurl;
-              }, 800);
-            }else{
-              $('.webinar__loadingbar').hide();
-              $('.webinar__registration-form2-block').hide();
-              $('.webinar__registration-form3-block').show();
-            }
-        }
-     });
   
      $('.bc__btn-2nd-step').click(function(e) {
-     		e.preventDefault();
+     	e.preventDefault();
         if($("input:radio[name='start-date']").is(":checked")) {
             let estarttime = $('input[name="start-date"]:checked').val();
             let eendtime = $('input[name="start-date"]:checked').data('endtime');
             let utmm = visitor_id+":"+v_country;
             let sf_uuid= v_timezone +":ik"+cta_lp+":ik"+getCookie("ik-landingpage-v2");
             let utmstring = "?assigned_to=Interview Kickstart&invitee_first_name="+$('.wr__firstname').val()+"&invitee_last_name="+$('.wr__lastname').val()+"&invitee_email="+$('.wr__email').val()+"&answer_1="+$('.wr__phone').val()+"&event_start_time="+estarttime+"&event_end_time="+eendtime+"&utm_medium="+utmm+"&salesforce_uuid="+sf_uuid;
-            let finalurl = "https://www.interviewkickstart.com/signup-final-step"+utmstring;
-            $('.wr__event-start-time').val(estarttime);
+            
+	    let finalurl;
+		
+	    if($('.bye-calendly-type').val() == "NoPhoneInTheFirstStep"){
+	    	finalurl = "https://www.interviewkickstart.com/signup-final-step-v6"+utmstring;
+	    }else{
+	    	finalurl = "https://www.interviewkickstart.com/signup-final-step"+utmstring;
+	    }
+	
+	    $('.wr__event-start-time').val(estarttime);
     				$('.wr__event-end-time').val(eendtime);
             $('.wr__invitee-start-time').val($("input[name='start-date']:checked").data('invitee_starttime'));
    					$('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
