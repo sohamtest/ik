@@ -161,10 +161,18 @@ var int_phone3;
         }else{
           $('.webinar__loadingbar').css("display","flex");
 	  let fullname = $(".full-name").val();
-	  $('.wr__firstname').val(fullname.substring(0, fullname.indexOf(' ')));
-          $('.wr__lastname').val(fullname.substring(fullname.indexOf(' ') + 1));
-		
-          $('.wr__fullname').val();
+	  
+	  if(fullname.substring(0, fullname.indexOf(' ')) == ''){
+	   	$('.wr__firstname').val(fullname.substring(fullname.indexOf(' ') + 1));
+          	$('.wr__lastname').val(fullname.substring(fullname.indexOf(' ') + 1));
+	  }else if(fullname.substring(fullname.indexOf(' ') + 1) == ''){
+	  	$('.wr__firstname').val(fullname.substring(0, fullname.indexOf(' ')));
+          	$('.wr__lastname').val(fullname.substring(0, fullname.indexOf(' ')));
+	  }else{
+	  	$('.wr__firstname').val(fullname.substring(0, fullname.indexOf(' ')));
+          	$('.wr__lastname').val(fullname.substring(fullname.indexOf(' ') + 1));
+	  }
+	  
           $('.wr__email').val($(".email").val());
 		
           dataLayer.push({
