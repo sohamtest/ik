@@ -1,14 +1,14 @@
 $(document).ready(function() {
 var int_phone3;
   $('.webinar-lightbox-close').click(function(e) {
-  		$('.webinar__lightbox-card').css('display','none');
+      $('.webinar__lightbox-card').css('display','none');
       $('.webinar__lightbox-exit-intent').css('display','block');
   });
   
-  $('.webinar-lightbox-exitintent-close').click(function(e) {
+  $('.webinar-lightbox-exitintent-close, .bc-popup-cta2').click(function(e) {
       $('.webinar__lightbox-card').css('display','flex');
       $('.webinar__lightbox-exit-intent').css('display','none');
-  		$('.webinar__lightbox').css('display','none');
+      $('.webinar__lightbox').css('display','none');
       $('body').css('overflow','auto');
   });
   
