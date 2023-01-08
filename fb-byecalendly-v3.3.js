@@ -1,23 +1,11 @@
 $(document).ready(function() {
 var int_phone3;
-	
+  
   $('.webinar-lightbox-close').click(function(e) {
-      $('.webinar__lightbox-card').css('display','none');
-      $('.webinar__lightbox-exit-intent').css('display','block');
-  });
-
-  $('.bc-popup-cta1').click(function(e) {
-      $('.webinar__lightbox-card').css('display','flex');
-      $('.webinar__lightbox-exit-intent').css('display','none');
-  });
-	
-  $('.bc-popup-cta2').click(function(e) {
-      $('.webinar__lightbox-card').css('display','flex');
-      $('.webinar__lightbox-exit-intent').css('display','none');
       $('.webinar__lightbox').css('display','none');
       $('body').css('overflow','auto');
   });
-  
+
  const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   
  let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=USA&program=Backend&timezone="+v_timezone;
