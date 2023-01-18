@@ -1,4 +1,5 @@
-var no_of_webinar_slots;
+var no_of_webinar_slots = 6;
+
 $(document).ready(function() {
 var int_phone3;
   $('.webinar-lightbox-close').click(function(e) {
