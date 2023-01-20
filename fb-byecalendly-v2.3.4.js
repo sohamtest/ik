@@ -44,7 +44,9 @@ var int_phone3;
 		    $('.webinar__lightbox-card').css('display','flex');
 		    $('body').css('overflow','auto');
 		    $('.webinar-lightbox-exitintent-freecourse-close').hide();
-		 }, 1000);
+		    $('.exit-intent-free-course-form').css("display","block");
+		    $('.success-message-9').css("display","none");
+		 }, 3000);
 	}
   });
 	
