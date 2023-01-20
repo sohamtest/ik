@@ -9,10 +9,10 @@ var int_phone3;
       }else if(exitintent_freecourse == true){
         $('.webinar__lightbox-card').css('display','none');
         $('.webinar__lightbox-free-course').css('display','block');
+	$('.exitintent-fc-email').val($(".email").val());
       }else{
         $('.webinar__lightbox').css('display','none');
         $('body').css('overflow','auto');
-        $('.exitintent-fc-email').val($(".email").val());
       }
   });
   
