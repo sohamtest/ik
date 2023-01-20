@@ -38,6 +38,13 @@ var int_phone3;
 		    'eventAction': 'exit_intent_free_course',
 		    'eventLabel': 'form submitted'
 		});
+		setTimeout(function(){
+		    $('.webinar__lightbox').css('display','none');
+		    $('.webinar__lightbox-free-course').css('display','none');
+		    $('.webinar__lightbox-card').css('display','flex');
+		    $('body').css('overflow','auto');
+		    $('.webinar-lightbox-exitintent-freecourse-close').hide();
+		 }, 1000);
 	}
   });
 	
