@@ -16,10 +16,25 @@ var int_phone3;
       }
   });
   
+  $('.btn-getaccess').click(function(e) {
+  	dataLayer.push({
+	    'event': 'exit_intent_free_course',
+	    'eventCategory': 'exit_intent_free_course',
+	    'eventAction': 'form submitted',
+	    'eventLabel': 'form submitted'
+	});
+  });
+	
   $('.webinar-lightbox-exitintent-freecourse-close').click(function(e) {
     $('.webinar__lightbox').css('display','none');
     $('.webinar__lightbox-free-course').css('display','none');
     $('.webinar__lightbox-card').css('display','flex');
+	dataLayer.push({
+	    'event': 'exit_intent_free_course',
+	    'eventCategory': 'exit_intent_free_course',
+	    'eventAction': 'close',
+	    'eventLabel': 'close'
+	});
   });
   
   $('.bc-popup-cta1').click(function(e) {
