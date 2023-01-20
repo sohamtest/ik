@@ -38,15 +38,16 @@ var int_phone3;
 		    'eventAction': 'exit_intent_free_course',
 		    'eventLabel': 'form submitted'
 		});
+		$('.webinar-lightbox-exitintent-freecourse-close').hide();
 		setTimeout(function(){
 		    $('.webinar__lightbox').css('display','none');
 		    $('.webinar__lightbox-free-course').css('display','none');
 		    $('.webinar__lightbox-card').css('display','flex');
 		    $('body').css('overflow','auto');
-		    $('.webinar-lightbox-exitintent-freecourse-close').hide();
 		    $('.exit-intent-free-course-form').css("display","block");
 		    $('.success-message-9').css("display","none");
-		 }, 3000);
+		    $('.webinar-lightbox-exitintent-freecourse-close').show();
+		 }, 2000);
 	}
   });
 	
