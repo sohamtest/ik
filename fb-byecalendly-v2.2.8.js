@@ -18,12 +18,28 @@ var int_phone3;
   });
   
   $('.btn-getaccess').click(function(e) {
-  	dataLayer.push({
-	    'event': 'exit_intent_free_course',
-	    'eventCategory': 'exit_intent_free_course',
-	    'eventAction': 'form submitted',
-	    'eventLabel': 'form submitted'
-	});
+	e.preventDefault();
+	let email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	
+	 $(".exitintent-fc-email").keypress(function() {
+             $('.exitintent-fc-email-error').addClass('hide');
+         });
+    	
+        $(".exitintent-fc-email").focus(function() {
+             $('.exitintent-fc-email-error').addClass('hide');
+    	});
+	  
+	if($('.exitintent-fc-email').val().length == 0) || !email_regex.test($(".exitintent-fc-email").val())){
+		$('.exitintent-fc-email-error').removeClass('hide');
+	}else{
+		$('.exit-intent-free-course-form').submit();
+		dataLayer.push({
+		    'event': 'exit_intent_free_course',
+		    'eventCategory': 'exit_intent_free_course',
+		    'eventAction': 'form submitted',
+		    'eventLabel': 'form submitted'
+		});
+	}
   });
 	
   $('.webinar-lightbox-exitintent-freecourse-close').click(function(e) {
