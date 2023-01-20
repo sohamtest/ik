@@ -29,7 +29,7 @@ var int_phone3;
              $('.exitintent-fc-email-error').addClass('hide');
     	});
 	  
-	if($('.exitintent-fc-email').val().length == 0) || !email_regex.test($(".exitintent-fc-email").val())){
+	if($('.exitintent-fc-email').val().length == 0) || (!email_regex.test($(".exitintent-fc-email").val()))){
 		$('.exitintent-fc-email-error').removeClass('hide');
 	}else{
 		$('.exit-intent-free-course-form').submit();
