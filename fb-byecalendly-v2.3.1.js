@@ -10,7 +10,6 @@ var int_phone3;
         $('.webinar__lightbox-card').css('display','none');
         $('.webinar__lightbox-free-course').css('display','block');
 	$('.exitintent-fc-email').val($(".email").val());
-	$('body').css('overflow','auto');
       }else{
         $('.webinar__lightbox').css('display','none');
         $('body').css('overflow','auto');
