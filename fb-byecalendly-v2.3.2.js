@@ -35,7 +35,7 @@ var int_phone3;
 		dataLayer.push({
 		    'event': 'exit_intent_free_course',
 		    'eventCategory': 'exit_intent_free_course',
-		    'eventAction': 'form submitted',
+		    'eventAction': 'exit_intent_free_course',
 		    'eventLabel': 'form submitted'
 		});
 	}
@@ -49,7 +49,7 @@ var int_phone3;
 	dataLayer.push({
 	    'event': 'exit_intent_free_course',
 	    'eventCategory': 'exit_intent_free_course',
-	    'eventAction': 'close',
+	    'eventAction': 'exit_intent_free_course',
 	    'eventLabel': 'close'
 	});
   });
