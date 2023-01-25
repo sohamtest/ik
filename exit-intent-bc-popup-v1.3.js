@@ -1,6 +1,6 @@
 $(document).ready(function () {
     let exitIntentBCpopup = getCookie("exitIntentBCpopup");
-    exitIntentBCpopup = (exitIntentBCpopup == '') ? true : false;
+    exitIntentBCpopup = (exitIntentBCpopup == '') ? true : exitIntentBCpopup;
     setCookie("exitIntentBCpopup",true);
 
     if(exitIntentBCpopup){
