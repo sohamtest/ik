@@ -1,7 +1,7 @@
 $(document).ready(function () {
     let exitIntentBCpopup = getCookie("exitIntentBCpopup");
     exitIntentBCpopup = (exitIntentBCpopup == '') ? true : exitIntentBCpopup;
-    setCookie("exitIntentBCpopup",true);
+    setCookie("exitIntentBCpopup",false);
 
     if(exitIntentBCpopup){
         // scrolling
