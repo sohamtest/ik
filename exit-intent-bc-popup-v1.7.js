@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let exitIntentBCpopup = getCookie("exitIntentBCpopup");
+    console.log("exitIntentBCpopup 1:"+exitIntentBCpopup);
     
     if(exitIntentBCpopup != false){
         setCookie("exitIntentBCpopup",false);
@@ -7,6 +8,8 @@ $(document).ready(function () {
     }else{
         exitIntentBCpopup = false;
     }
+    console.log("exitIntentBCpopup 2:"+exitIntentBCpopup);
+    
         // scrolling
         let prevScrollpos = window.pageYOffset;
         window.addEventListener("scroll", function () {
@@ -15,6 +18,7 @@ $(document).ready(function () {
             // Check if the scroll position is 1 rem or less
             //console.log(currentScrollPos, prevScrollpos)
             if(exitIntentBCpopup){
+                console.log("exitIntentBCpopup 3:"+exitIntentBCpopup);
                 if (prevScrollpos > currentScrollPos && (prevScrollpos - currentScrollPos) >= 400) {
                     $('.webinar__lightbox').css('display','flex');
                     dataLayer.push({
@@ -34,6 +38,7 @@ $(document).ready(function () {
 
     $(document).mouseleave(function () {
         if(exitIntentBCpopup){
+            console.log("exitIntentBCpopup 4:"+exitIntentBCpopup);
             $('.webinar__lightbox').css('display','flex');
             dataLayer.push({
                 'event': 'exit_intent_bye_calendly_popup',
