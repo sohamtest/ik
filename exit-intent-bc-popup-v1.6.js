@@ -1,9 +1,12 @@
 $(document).ready(function () {
     let exitIntentBCpopup = getCookie("exitIntentBCpopup");
-    exitIntentBCpopup = (exitIntentBCpopup == '') ? true : exitIntentBCpopup;
-    setCookie("exitIntentBCpopup",false);
-
     
+    if(exitIntentBCpopup != false){
+        setCookie("exitIntentBCpopup",false);
+        exitIntentBCpopup = true;
+    }else{
+        exitIntentBCpopup = false;
+    }
         // scrolling
         let prevScrollpos = window.pageYOffset;
         window.addEventListener("scroll", function () {
