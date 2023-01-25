@@ -26,6 +26,7 @@ $(document).ready(function () {
             if (currentScrollPos > prevScrollpos)
             prevScrollpos = currentScrollPos
         }
+        }
     });
 
     $(document).mouseleave(function () {
