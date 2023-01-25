@@ -2,8 +2,8 @@ $(document).ready(function () {
     let exitIntentBCpopup = getCookie("exitIntentBCpopup");
     console.log("exitIntentBCpopup 1:"+exitIntentBCpopup);
     
-    if(exitIntentBCpopup != false){
-        setCookie("exitIntentBCpopup",false);
+    if(exitIntentBCpopup != "false"){
+        setCookie("exitIntentBCpopup","false");
         exitIntentBCpopup = true;
     }else{
         exitIntentBCpopup = false;
