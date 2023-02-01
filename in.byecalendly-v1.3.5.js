@@ -138,7 +138,7 @@ var int_phone3;
             let estarttime = $('input[name="start-date"]:checked').val();
             let eendtime = $('input[name="start-date"]:checked').data('endtime');
             let utmm = visitor_id+":"+v_country;
-            let sf_uuid= v_timezone +":ik"+cta_lp+":ik"+getCookie("ik-landingpage-v2");
+            let sf_uuid= v_timezone +":in.ik"+cta_lp+":in.ik"+getCookie("ik-landingpage");
             let utmstring = "?assigned_to=Interview Kickstart&invitee_first_name="+$('.wr__firstname').val()+"&invitee_last_name="+$('.wr__lastname').val()+"&invitee_email="+$('.wr__email').val()+"&answer_1="+$('.wr__phone').val()+"&event_start_time="+estarttime+"&event_end_time="+eendtime+"&utm_medium="+utmm+"&salesforce_uuid="+sf_uuid+"&whatsapp_consent="+$('.wr__whatsappconsent').val();
             let finalurl = "/signup-final-step"+utmstring;
             $('.wr__event-start-time').val(estarttime);
