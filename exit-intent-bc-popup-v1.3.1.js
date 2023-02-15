@@ -1,5 +1,3 @@
-<input type="hidden" value="No" name="Is it exit intent popup?" class="is_exit_intent_popup" />
-
 $(document).ready(function () {
     let exitIntentBCpopup = getCookie("exitIntentBCpopup");
     
