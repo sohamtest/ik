@@ -10,10 +10,10 @@ var int_phone3;
       }else if(exitintent_freecourse == true){
         $('.webinar__lightbox-card').css('display','none');
         $('.webinar__lightbox-free-course').css('display','block');
-	      $('.exitintent-fc-email').val($(".email").val());
+	$('.exitintent-fc-email').val($(".email").val());
         
         dataLayer.push({
-          'event': 'exit_intent_free_course',
+          'event': 'exit_intent',
           'eventCategory': 'exit_intent_free_course',
           'eventAction': 'exit_intent_free_course',
           'eventLabel': 'form triggered'
@@ -41,12 +41,12 @@ var int_phone3;
 		$('.exitintent-fc-email-error').removeClass('hide');
 	}else{
 		$('.exit-intent-free-course-form').submit();
-      dataLayer.push({
-          'event': 'exit_intent_free_course',
-          'eventCategory': 'exit_intent_free_course',
-          'eventAction': 'exit_intent_free_course',
-          'eventLabel': 'form submitted'
-      });
+	      dataLayer.push({
+		  'event': 'exit_intent',
+		  'eventCategory': 'exit_intent_free_course',
+		  'eventAction': 'exit_intent_free_course',
+		  'eventLabel': 'form submitted'
+	      });
 		$('.webinar-lightbox-exitintent-freecourse-close').hide();
 		setTimeout(function(){
 		    $('.webinar__lightbox').css('display','none');
@@ -66,7 +66,7 @@ var int_phone3;
     $('.webinar__lightbox-card').css('display','flex');
     $('body').css('overflow','auto');
       dataLayer.push({
-          'event': 'exit_intent_free_course',
+          'event': 'exit_intent',
           'eventCategory': 'exit_intent_free_course',
           'eventAction': 'exit_intent_free_course',
           'eventLabel': 'close'
@@ -190,11 +190,22 @@ var int_phone3;
           $('.wr__lastname').val($(".last-name").val());
           $('.wr__email').val($(".email").val());
           $('.wr__phone').val(fullphonenumber3);
+	
           dataLayer.push({
               'event': 'new_webinar_registration_form_submitted',
               'webinar_name': (document.querySelector('.webinar__lightbox-title').innerHTML)
           });
-        	$('.webinar__registration-form1').submit();
+		
+	if($('.is_exit_intent_popup').val() == "Yes"){
+		dataLayer.push({
+		  'event': 'exit_intent',
+		  'eventCategory': 'exit_intent_browser_tab_close_gesture',
+		  'eventAction': 'exit_intent_browser_tab_close_gesture',
+		  'eventLabel': 'form submitted'
+		});
+	}
+	
+          $('.webinar__registration-form1').submit();
           $('.webinar__registration-form1-block').hide();
           	setTimeout(function(){
               $('.webinar__registration-form2-block').show();
@@ -259,25 +270,37 @@ var int_phone3;
               'event': 'new_webinar_registration_form_submitted',
               'webinar_name': (document.querySelector('.webinar__lightbox-title').innerHTML)
           });
-        	$('.webinar__registration-form1').submit();
+	
+	if($('.is_exit_intent_popup').val() == "Yes"){
+		dataLayer.push({
+		  'event': 'exit_intent',
+		  'eventCategory': 'exit_intent_browser_tab_close_gesture',
+		  'eventAction': 'exit_intent_browser_tab_close_gesture',
+		  'eventLabel': 'form submitted'
+		});
+	}
+		
+	
+          $('.webinar__registration-form1').submit();
           $('.webinar__registration-form1-block').hide();
-          	setTimeout(function(){
+            setTimeout(function(){
               $('.webinar__registration-form2-block').show();
-          		$('.webinar__loadingbar').hide();
+              $('.webinar__loadingbar').hide();
             }, 200);
          
         }
           $("input:radio[name='start-date']:first").attr("checked", true);
           $('.wr__event-start-time').val($("input:radio[name='start-date']:first").val());
-   				$('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
+   	  $('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
-   				$('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+   	  $('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
    });
   
      $('.bc__btn-2nd-step').click(function(e) {
      	e.preventDefault();
         if($("input:radio[name='start-date']").is(":checked")) {
-            let estarttime = $('input[name="start-date"]:checked').val();
+            
+	    let estarttime = $('input[name="start-date"]:checked').val();
             let eendtime = $('input[name="start-date"]:checked').data('endtime');
             let utmm = visitor_id+":"+v_country;
             let sf_uuid= v_timezone +":ik"+cta_lp+":ik"+getCookie("ik-landingpage-v2");
@@ -292,9 +315,9 @@ var int_phone3;
 	    }
 	
 	    $('.wr__event-start-time').val(estarttime);
-    				$('.wr__event-end-time').val(eendtime);
+    	    $('.wr__event-end-time').val(eendtime);
             $('.wr__invitee-start-time').val($("input[name='start-date']:checked").data('invitee_starttime'));
-   					$('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
+   	    $('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
             $('.webinar__loadingbar').show();
             $('.webinar__registration-form2').submit();
             
