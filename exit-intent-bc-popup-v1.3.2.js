@@ -20,7 +20,7 @@ $(document).ready(function () {
                     $('.webinar__lightbox').css('display','flex');
                     $('.is_exit_intent_popup').val("Yes");
                     dataLayer.push({
-                        'event': 'exit_intent_scroll',
+                        'event': 'exit_intent',
                         'eventCategory': 'exit_intent_scroll',
                         'eventAction': 'exit_intent_scroll',
                         'eventLabel': 'form triggered'
@@ -38,7 +38,7 @@ $(document).ready(function () {
             $('.webinar__lightbox').css('display','flex');
             $('.is_exit_intent_popup').val("Yes");
             dataLayer.push({
-                'event': 'exit_intent_browser_tab_close_gesture',
+                'event': 'exit_intent',
                 'eventCategory': 'exit_intent_browser_tab_close_gesture',
                 'eventAction': 'exit_intent_browser_tab_close_gesture',
                 'eventLabel': 'form triggered'
