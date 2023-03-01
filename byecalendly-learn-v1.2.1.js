@@ -40,7 +40,6 @@ var int_phone3;
               'eventLabel': 'close'
             });
           }
-        
       }
   });
   
@@ -107,6 +106,9 @@ var int_phone3;
  const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
  let vccode = v_country_3;
  vccode = ((vccode != 'USA') && (vccode != 'IND')) ? 'USA' : vccode;
+
+ console.log("v_country_3: "+v_country_3);
+ console.log("vccode: "+vccode);
   
  let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country="+vccode+"&program=Backend&timezone="+v_timezone;
 	
