@@ -111,7 +111,9 @@ var int_phone3;
   });
   
   function createWebinarSlotsList(country, timezone){
-  
+    
+    country = (country != "IND") ? "USA" : country;
+	  
     const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     let v_timezone_formatted  = timezone.replace("+", "%2B");
