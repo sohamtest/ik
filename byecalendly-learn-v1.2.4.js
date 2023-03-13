@@ -106,7 +106,12 @@ var int_phone3;
   
  
   $.getJSON("https://get.geojs.io/v1/ip/geo.json",function(t){}).done(function(t){
-    createWebinarSlotsList(t.country_code3,t.timezone);
+	if(t.country_code3 == "IND"){
+	  createWebinarSlotsList("IND",t.timezone);
+	}else{
+	  createWebinarSlotsList("USA",t.timezone);
+	}
+	 
   }).fail(function(t){
     createWebinarSlotsList("USA","US/Pacific");
   });
