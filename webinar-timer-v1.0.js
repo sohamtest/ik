@@ -21,8 +21,8 @@ function nextWebinar(currentDate, currentWebTime){
     return nextWebinarDate;
 };
 
-function initStates(){
-    timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+function initStates(tz){
+    timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: tz });
     timerState.currentDateSec = Date.parse(timerState.currentDate);
     timerState.nextDate = nextWebinar(timerState.currentDate.split(',')[0], timerState.currentDateSec);
     if (timerState.nextDate !== '') {
@@ -76,16 +76,16 @@ function updateTimerUI(day, hrs, min, sec){
     unitaryCountHandler();
 };
 
-function TimerHandler(){
+function TimerHandler(tz){
     // initialize states
-    initStates();
+    initStates(tz);
 
     // start timer
     const webinarTimer = setInterval(() => {
         if (timerState.nextDate === '') {
             clearInterval(webinarTimer);
         }
-        timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+        timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: tz });
         timerState.currentDateSec = Date.parse(timerState.currentDate);
 
         const distanceCount = timerState.nextDateSec - timerState.currentDateSec;
@@ -126,7 +126,7 @@ function TimerHandler(){
 
         if (distanceCount <= 0) {
             // move timer to next date if reached 0
-            initStates();
+            initStates(tz);
 
             if (timerState.nextDate === '') {
                 clearInterval(webinarTimer);
