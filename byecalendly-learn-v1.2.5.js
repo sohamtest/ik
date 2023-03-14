@@ -107,12 +107,15 @@ var int_phone3;
  
   $.getJSON("https://get.geojs.io/v1/ip/geo.json",function(t){}).done(function(t){
 	if(t.country_code3 == "IND"){
+	  TimerHandler('IST');
 	  createWebinarSlotsList("IND",t.timezone);
 	}else{
+	  TimerHandler('America/New_York');
 	  createWebinarSlotsList("USA",t.timezone);
 	}
 	 
   }).fail(function(t){
+    TimerHandler('America/New_York');
     createWebinarSlotsList("USA","US/Pacific");
   });
   
