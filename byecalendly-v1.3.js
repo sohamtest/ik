@@ -359,7 +359,7 @@ var int_phone3;
             let estarttime = $('input[name="start-date"]:checked').val();
             let eendtime = $('input[name="start-date"]:checked').data('endtime');
             let utmm = visitor_id+":"+v_country;
-            let sf_uuid= v_timezone +":learn.ik"+cta_lp+":learn.ik"+getCookie("ik-landingpage-v2");
+            let sf_uuid= v_timezone +":"+location.host+cta_lp+":"+location.host+getCookie("ik-landingpage-v2");
             let utmstring = "?utm_source="+$('.utm_source').val()+"&assigned_to=Interview Kickstart&invitee_first_name="+$('.wr__firstname').val()+"&invitee_last_name="+$('.wr__lastname').val()+"&invitee_email="+$('.wr__email').val()+"&answer_1="+$('.wr__phone').val()+"&event_start_time="+estarttime+"&event_end_time="+eendtime+"&utm_medium="+utmm+"&salesforce_uuid="+sf_uuid;
             
 	    let finalurl;
@@ -371,9 +371,9 @@ var int_phone3;
 	    }
 	
 	    $('.wr__event-start-time').val(estarttime);
-    				$('.wr__event-end-time').val(eendtime);
+    		$('.wr__event-end-time').val(eendtime);
             $('.wr__invitee-start-time').val($("input[name='start-date']:checked").data('invitee_starttime'));
-   					$('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
+   		$('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
             $('.webinar__loadingbar').show();
             $('.webinar__registration-form2').submit();
             
