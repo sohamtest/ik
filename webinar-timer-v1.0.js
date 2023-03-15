@@ -5,8 +5,11 @@ const timerState = {
     nextDateSec: '',
 };
 
-function nextWebinar(currentDate, currentWebTime){
+function nextWebinar(currentDate, currentWebTime, tz){
     let nextWebinarDate = '';
+   
+    webinarSchedule = (tz == "IST") ? webinarScheduleIndia : webinarScheduleUSA;
+    
     for (let idx = 0; idx < webinarSchedule.length; idx++) {
         if (webinarSchedule[idx]) {
             const currentDateWeb = Date.parse(new Date(`${webinarSchedule[idx].date}, ${webinarSchedule[idx].time}`));
@@ -24,7 +27,7 @@ function nextWebinar(currentDate, currentWebTime){
 function initStates(tz){
     timerState.currentDate = new Date().toLocaleString('en-US', { timeZone: tz });
     timerState.currentDateSec = Date.parse(timerState.currentDate);
-    timerState.nextDate = nextWebinar(timerState.currentDate.split(',')[0], timerState.currentDateSec);
+    timerState.nextDate = nextWebinar(timerState.currentDate.split(',')[0], timerState.currentDateSec, tz);
     if (timerState.nextDate !== '') {
         timerState.nextDateSec = Date.parse(timerState.nextDate);
     }
