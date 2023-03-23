@@ -109,7 +109,7 @@ var int_phone3;
 	
   let forceUSwebinarFlag = getAllUrlParams();
     
-  if((t.country_code3 == "IND") && (forceUSwebinarFlag['forceuswebinar'] != undefined)){
+  if((t.country_code3 == "IND") && (forceUSwebinarFlag['forceuswebinar'] == undefined)){
 	  TimerHandler('IST');
 	  createWebinarSlotsList("IND",t.timezone);
 	}else{
