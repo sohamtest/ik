@@ -258,7 +258,7 @@ var int_phone3;
         $("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
         $(".tno1").val(fullphonenumber3);
         
-        $( ".full-name,.email,.phone," ).keypress(function() {
+        $( ".full-name,.email,.phone" ).keypress(function() {
              $('.full-name-error,.email-id-error,.phone-error').addClass('hide');
           });
     	
