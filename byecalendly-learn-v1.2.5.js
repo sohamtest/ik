@@ -168,7 +168,7 @@ var int_phone3;
      });
 
      $('.bc__btn-select-webinar-slot').click(function(e) {
-  			e.preventDefault();
+  	e.preventDefault();
       	setHiddenFields();
        
         let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
@@ -254,31 +254,34 @@ var int_phone3;
   	e.preventDefault();
       	setHiddenFields();
        
-        //let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
-        //$("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
-        //$(".tno1").val(fullphonenumber3);
+        let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
+        $("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
+        $(".tno1").val(fullphonenumber3);
         
-        $( ".full-name,.email" ).keypress(function() {
-             $('.full-name-error,.email-id-error').addClass('hide');
+        $( ".full-name,.email,.phone," ).keypress(function() {
+             $('.full-name-error,.email-id-error,.phone-error').addClass('hide');
           });
     	
-        $( ".full-name, .email" ).focus(function() {
-             $('.full-name-error,.email-id-error').addClass('hide');
+        $( ".full-name, .email, .phone" ).focus(function() {
+             $('.full-name-error,.email-id-error,.phone-error').addClass('hide');
     	});
         
         //let active_visit = read_cookie("v_latest");
         let name_regex = new RegExp("^[a-zA-Z ]+$");
         let email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        //let phone_regex = /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/gm;
+        let phone_regex = /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/gm;
                 
         if( 
             ($(".full-name").val().length == 0) &&
-            ($(".email").val().length == 0)){
-             $('.full-name-error,.email-id-error').removeClass('hide');
+            ($(".email").val().length == 0) && 
+	    ($(".phone").val().length == 0)){
+             $('.full-name-error,.email-id-error,.phone-error').removeClass('hide');
         }else if (!name_regex.test($(".full-name").val()) || $(".full-name").val().length == 0){
             $('.full-name-error').removeClass('hide');
+        }else if(!phone_regex.test($(".phone").val()) || $(".phone").val().length == 0){
+          $('.phone-error').removeClass('hide');
         }else if (!email_regex.test($(".email").val()) || $(".email").val().length == 0){
-        	$('.email-id-error').removeClass('hide');
+          $('.email-id-error').removeClass('hide');
         }else{
           $('.webinar__loadingbar').css("display","flex");
 	  let fullname = $(".full-name").val();
@@ -319,20 +322,19 @@ var int_phone3;
             });
           }
           
-          
-        	$('.webinar__registration-form1').submit();
+       	  $('.webinar__registration-form1').submit();
           $('.webinar__registration-form1-block').hide();
-          	setTimeout(function(){
+              setTimeout(function(){
               $('.webinar__registration-form2-block').show();
-          		$('.webinar__loadingbar').hide();
+              $('.webinar__loadingbar').hide();
             }, 200);
          
         }
           $("input:radio[name='start-date']:first").attr("checked", true);
           $('.wr__event-start-time').val($("input:radio[name='start-date']:first").val());
-   				$('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
+   	  $('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
-   				$('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+   	  $('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
    });
   
      $('.bc__btn-2nd-step').click(function(e) {
