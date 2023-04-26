@@ -115,7 +115,6 @@ var int_phone3;
 	}else{
 	  TimerHandler('America/New_York');
 	  createWebinarSlotsList("USA",t.timezone);
-    $('.v_country').val("United States");
 	}
 	 
   }).fail(function(t){
