@@ -195,13 +195,7 @@ var int_phone3;
      $('.bc__btn-select-webinar-slot-v2').click(function(e) {
   	e.preventDefault();
       	setHiddenFields();
-       	
-	let fUSWFlag = getAllUrlParams();
-	
-	if(fUSWFlag['forceuswebinar'] == "true"){
-	   $('.v_country').val("United States");
-	}
-	
+    
         //let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
        // $("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
         //$(".tno1").val(fullphonenumber3);
@@ -279,12 +273,6 @@ var int_phone3;
   	e.preventDefault();
       	setHiddenFields();
        
-	let fUSWFlag = getAllUrlParams();
-	
-	if(fUSWFlag['forceuswebinar'] == "true"){
-	   $('.v_country').val("United States");
-	}
-	  
         //let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
         //$("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
         //$(".tno1").val(fullphonenumber3);
