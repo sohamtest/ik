@@ -191,6 +191,56 @@ var int_phone3;
      		$('.webinar__registration-form1-block').show();
         $('.webinar__registration-form2-block').hide();
      });
+	
+    function pushToEndPoint(endpoint){
+    //Zap end point for step 1
+          var formData = {
+            "First Name": $('.wr__firstname').val(), 
+            "Last Name": $('.wr__lastname').val(),
+            "Email Address": $('.email').val(),
+            "ByeCalendlyType": $('.bye-calendly-type').val(),
+            "webinar-type": $('.webinar-type').val(),
+            
+            "utm_source": $('.utm_source').val(),
+            "utm_medium": $('.utm_medium').val(),
+            "utm_campaign": $('.utm_campaign').val(),
+            "utm_content": $('.utm_content').val(),
+            "utm_adset": $('.utm_adset').val(),
+            "utm_term": $('.utm_term').val(),
+            
+            "gclid": $('.gclid').val(),
+            "msclkid": $('.msclkid').val(),
+            "fbclid": $('.fbclid').val(),
+            "user_id": $('.user_id').val(),
+            
+            "cta_page_url": $('.cta_page_url').val(),
+            "landing_page_url": $('l_page_url').val(),
+            "event_name": "How to Nail your next Technical Interview",
+            "user_timezone": $('.user_timezone').val(),
+            "page_url": $('.page_url').val(),
+            "site_url": $('.site_url').val(),
+            "v_country": $('.v_country').val(),
+            "salesforce_uuid": $('.salesforce_uuid').val(),
+            "phone_number_full": $('.tno1').val(),
+            "is_exit_intent_popup": $('.is_exit_intent_popup').val(),
+	    
+	    "Event Start Time" : $('.wr__event-start-time').val(),
+	    "Event End Time" : $('.wr__event-end-time').val(),
+	    "Invitee Start Time" : $('.wr__invitee-start-time').val(),
+	    "Invitee End Time" : $('.wr__invitee-end-time').val(),
+          };
+          
+          $.ajax({
+            type: "POST",
+            url: endpoint,
+            data: formData,
+            success: function (e) {
+              if(e.status == "success"){
+                console.log("Form submitted successfully!");
+              }
+            }
+          });
+    }
 
      $('.bc__btn-select-webinar-slot-v2').click(function(e) {
   	e.preventDefault();
@@ -254,50 +304,9 @@ var int_phone3;
             });
           }
           
-          //Zap end point for step 1
-          var step1Data = {
-            "First Name": $('.wr__firstname').val(), 
-            "Last Name": $('.wr__lastname').val(),
-            "Email Address": $('.email').val(),
-            "ByeCalendlyType": $('.bye-calendly-type').val(),
-            "webinar-type": $('.webinar-type').val(),
-            
-            "utm_source": $('.utm_source').val(),
-            "utm_medium": $('.utm_medium').val(),
-            "utm_campaign": $('.utm_campaign').val(),
-            "utm_content": $('.utm_content').val(),
-            "utm_adset": $('.utm_adset').val(),
-            "utm_term": $('.utm_term').val(),
-            
-            "gclid": $('.gclid').val(),
-            "msclkid": $('.msclkid').val(),
-            "fbclid": $('.fbclid').val(),
-            "user_id": $('.user_id').val(),
-            
-            "cta_page_url": $('.cta_page_url').val(),
-            "landing_page_url": $('l_page_url').val(),
-            "event_name": "How to Nail your next Technical Interview",
-            "user_timezone": $('.user_timezone').val(),
-            "page_url": $('.page_url').val(),
-            "site_url": $('.site_url').val(),
-            "v_country": $('.v_country').val(),
-            "salesforce_uuid": $('.salesforce_uuid').val(),
-            "phone_number_full": $('.tno1').val(),
-            "is_exit_intent_popup": $('.is_exit_intent_popup').val()
-          };
+          pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/34c9jjz/");
           
-          $.ajax({
-            type: "POST",
-            url: "https://hooks.zapier.com/hooks/catch/11068981/34c9jjz/",
-            data: step1Data,
-            success: function (e) {
-              if(e.status == "success"){
-                console.log("Step 1 submitted successfully!");
-              }
-            }
-          });    	
-          
-        	$('.webinar__registration-form1').submit();
+          $('.webinar__registration-form1').submit();
           
           $('.webinar__registration-form1-block').hide();
           	setTimeout(function(){
@@ -308,9 +317,9 @@ var int_phone3;
         }
           $("input:radio[name='start-date']:first").attr("checked", true);
           $('.wr__event-start-time').val($("input:radio[name='start-date']:first").val());
-   				$('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
+   	  $('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
-   				$('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+   	  $('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
    });
   
   $('.bc__btn-select-webinar-slot').click(function(e) {
@@ -414,10 +423,14 @@ var int_phone3;
 	    }
 	
 	    $('.wr__event-start-time').val(estarttime);
-    		$('.wr__event-end-time').val(eendtime);
+    	    $('.wr__event-end-time').val(eendtime);
             $('.wr__invitee-start-time').val($("input[name='start-date']:checked").data('invitee_starttime'));
-   		$('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
+   	    $('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
+	    
             $('.webinar__loadingbar').show();
+		
+	    pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/34cq9f8/");
+	    
             $('.webinar__registration-form2').submit();
             
             bake_cookie("v_history","");
