@@ -286,7 +286,7 @@ var int_phone3;
             });
           }
           
-          pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/34c9jjz/");
+          pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/340hd4j/");
           
         	$('.webinar__registration-form1').submit();
           $('.webinar__registration-form1-block').hide();
@@ -374,7 +374,7 @@ var int_phone3;
               'eventLabel': 'form submitted'
             });
           }
-          pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/34c9jjz/");
+          pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/340hd4j/");
           
        	  $('.webinar__registration-form1').submit();
           $('.webinar__registration-form1-block').hide();
@@ -413,6 +413,9 @@ var int_phone3;
             $('.wr__invitee-start-time').val($("input[name='start-date']:checked").data('invitee_starttime'));
    					$('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
             $('.webinar__loadingbar').show();
+		
+	    pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/340hl1a/");
+		
             $('.webinar__registration-form2').submit();
             
             bake_cookie("v_history","");
