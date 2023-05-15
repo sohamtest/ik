@@ -131,14 +131,37 @@ var int_phone3;
 	}
         let noslots = (resobj.length > 6) ? 6 : resobj.length;
         
-        console.log("webinarUI: "+webinarUI);
-        
         for (i=0;i<noslots;i++){
           var hdate = resobj[i].weekday +", "+ resobj[i].day + " " + t_months[parseInt(resobj[i].month)-1] + " "+ resobj[i].year + " | " + resobj[i].hour +":" + resobj[i].minute +" "+resobj[i].am_or_pm;
-					var radiohtml = '<label class="select-webinar-slot w-radio"><input type="radio" name="start-date" value="'+ resobj[i].start_time +'" data-endtime="'+resobj[i].end_time+'" data-invitee_starttime="'+ resobj[i].invitee_start_time +'" data-invitee_endtime="'+ resobj[i].invitee_end_time +'" data-name="'+ resobj[i].start_time +'" class="w-form-formradioinput select-webinar-radio-btn w-radio-input"><span class="w-form-label" for="start-date-'+i+'">'+hdate+' '+ tz +'</span></label>';
-          $('.webinar__slots').append(
-            $(radiohtml)
-          );
+	  var radiohtml = '<label class="select-webinar-slot w-radio"><input type="radio" name="start-date" value="'+ resobj[i].start_time +'" data-endtime="'+resobj[i].end_time+'" data-invitee_starttime="'+ resobj[i].invitee_start_time +'" data-invitee_endtime="'+ resobj[i].invitee_end_time +'" data-name="'+ resobj[i].start_time +'" class="w-form-formradioinput select-webinar-radio-btn w-radio-input"><span class="w-form-label" for="start-date-'+i+'">'+hdate+' '+ tz +'</span></label>';
+          var radiohtmlv2 = '<div class="ws-card">
+              <div class="ws-card__day">resobj[i].weekday.substring(0, 3);</div>
+              <div class="slot-status-grid">
+                  <div class="ws-card__date">resobj[i].day</div>
+                  <div class="ws-almost-full">Almost full!</div>
+              </div>
+              <div class="form-slot-block">
+                  <label class="form-radio-btn-block-slot w-radio">
+                      <div class="w-form-formradioinput w-form-formradioinput--inputType-custom ws-card__time-card w-radio-input w--redirected-checked"></div>
+                      <input style="opacity:0;position:absolute;z-index:-1" type="radio" name="start-date" value="'+ resobj[i].start_time +'" data-endtime="'+resobj[i].end_time+'" data-invitee_starttime="'+ resobj[i].invitee_start_time +'" data-invitee_endtime="'+ resobj[i].invitee_end_time +'" data-name="'+ resobj[i].start_time +'" class="w-form-formradioinput select-webinar-radio-btn w-radio-input">
+                          <span class="slod-text-hide w-form-label" for="radio-10">resobj[i].invitee_start_time.substring(0, 7) - resobj[i].invitee_end_time.substring(0, 7)</span></label>
+                          <div class="slot-time-block">
+                              <div class="ws-time">resobj[i].invitee_start_time.substring(0, 7) - resobj[i].invitee_end_time.substring(0, 7)</div>
+                              <div class="slot-available-grid">
+                                  <div>Available Slots -</div>
+                                  <div class="ws-available-slots red">08</div>
+                              </div>
+                          </div>
+              </div>
+          </div>';
+          
+	  console.log("webinarUI: "+webinarUI);
+
+	  if(webinarUI == "v2"){
+            $('.webinar__slots').append($(radiohtmlv2));
+	  }else{
+	    $('.webinar__slots').append($(radiohtml));
+	  }
         }
       }else{
         registration_type = "calendly";
