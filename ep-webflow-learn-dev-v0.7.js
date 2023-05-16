@@ -145,6 +145,11 @@ var int_phone3;
 	    $('.webinar__slots').append($(radiohtml));
 	  }
         }
+	$('.ws-card').find('.ws-almost-full').hide();
+	$('.ws-card:first-child').find('.ws-almost-full').show();
+	$('.ws-card:nth-child(2)').find('.ws-almost-full').text("Filling fast!").addClass('ws-filling-fast');
+	$('.ws-filling-fast').css("display","block");
+	      
       }else{
         registration_type = "calendly";
       }
