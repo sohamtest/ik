@@ -146,7 +146,7 @@ var int_phone3;
 	  }
         }
 	$('.ws-available-slots').css("color","#0E9F1C");
-	$('.ws-card:first-child').css("color","#D14040");
+	$('.ws-card:first-child').find('.ws-available-slots').css("color","#D14040");
 	$('.ws-card:nth-child(2)').find('.ws-available-slots').css("color","#ED7735");
 	      
 	$('.ws-card').find('.ws-almost-full').hide();
