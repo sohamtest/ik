@@ -43,7 +43,15 @@ var int_phone3;
         
       }
   });
-  
+	
+function daysUntil(dateString) {
+    const futureDate = new Date(dateString);
+    const currentDate = new Date();
+    const diffInMilliseconds = futureDate - currentDate;
+    const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+    return diffInDays;
+}
+	
   $('.btn-getaccess').click(function(e) {
 	e.preventDefault();
 	let email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
