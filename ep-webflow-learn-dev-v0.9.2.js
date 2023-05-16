@@ -145,6 +145,10 @@ var int_phone3;
 	    $('.webinar__slots').append($(radiohtml));
 	  }
         }
+	$('.ws-available-slots').css("color","#0E9F1C");
+	$('.ws-available-slots:first-child').css("color","#D14040");
+	$('.ws-card:nth-child(2)').find('.ws-available-slots').css("color","#ED7735");
+	      
 	$('.ws-card').find('.ws-almost-full').hide();
 	$('.ws-card:first-child').find('.ws-almost-full').show();
 	$('.ws-card:nth-child(2)').find('.ws-almost-full').text("Filling fast!").addClass('ws-filling-fast');
