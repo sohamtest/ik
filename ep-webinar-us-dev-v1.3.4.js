@@ -175,19 +175,19 @@ function daysUntil(dateString) {
  
           if(webinarUI == "v2"){
             $('.webinar__slots').append($(radiohtmlv2));
+	  $('.webinar__slots').addClass('slot-grid');
+	  $('.ws-available-slots').css("color","#0E9F1C");
+	  $('.ws-card:first-child').find('.ws-available-slots').css("color","#D14040");
+	  $('.ws-card:nth-child(2)').find('.ws-available-slots').css("color","#ED7735");
+
+	  $('.ws-card').find('.ws-almost-full').hide();
+	  $('.ws-card:first-child').find('.ws-almost-full').show();
+	  $('.ws-card:nth-child(2)').find('.ws-almost-full').text("Filling fast!").addClass('ws-filling-fast');
+	  $('.ws-filling-fast').css("display","block");
           }else{
             $('.webinar__slots').append($(radiohtml));
           }
         }
-          $('.webinar__slots').addClass('slot-grid');
-          $('.ws-available-slots').css("color","#0E9F1C");
-          $('.ws-card:first-child').find('.ws-available-slots').css("color","#D14040");
-          $('.ws-card:nth-child(2)').find('.ws-available-slots').css("color","#ED7735");
-
-          $('.ws-card').find('.ws-almost-full').hide();
-          $('.ws-card:first-child').find('.ws-almost-full').show();
-          $('.ws-card:nth-child(2)').find('.ws-almost-full').text("Filling fast!").addClass('ws-filling-fast');
-          $('.ws-filling-fast').css("display","block");
           
       }else{
         registration_type = "calendly";
