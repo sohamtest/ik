@@ -26,9 +26,10 @@ var int_phone3;
       if(this.status == 200){
         let resobj = JSON.parse(this.response);
 	if(resobj.length == 0){
-		registration_type = "calendly";
+	  console.error("P0: The Uplevel Webinar Slots API Returned No Data."); 
+	  registration_type = "calendly";
 	}else{
-		registration_type = "byecalendly";
+	   registration_type = "byecalendly";
 	}
 	no_of_webinar_slots = (no_of_webinar_slots == undefined) ? 4 : no_of_webinar_slots;
         let nslots = (resobj.length > no_of_webinar_slots) ? no_of_webinar_slots : resobj.length;
@@ -41,10 +42,12 @@ var int_phone3;
           );
         }
       }else{
-        registration_type = "calendly";
+        console.error("P0: The Uplevel Webinar Slots API Failed."); 
+	registration_type = "calendly";
       }
     }
     xhr.onerror = function(){
+      console.error("P0: The Uplevel Webinar Slots API Failed."); 
       registration_type = "calendly";
     }
     xhr.send();
