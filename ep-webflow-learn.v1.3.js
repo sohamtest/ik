@@ -192,7 +192,7 @@ var int_phone3;
             
             "cta_page_url": $('.cta_page_url').val(),
             "landing_page_url": $('.l_page_url').val(),
-            "event_name": "How to Nail your next Technical Interview",
+            "event_name": eventName,
             "user_timezone": $('.user_timezone').val(),
             "page_url": $('.page_url').val(),
             "site_url": $('.site_url').val(),
