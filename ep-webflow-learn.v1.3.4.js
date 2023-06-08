@@ -164,7 +164,7 @@ var int_phone3;
      $('.btn-back-to-step1').click(function(e) {
       	$('.webinar__registration-form1').show();
         $('.webinar__registration-success').hide();
-     		$('.webinar__registration-form1-block').show();
+     	$('.webinar__registration-form1-block').show();
         $('.webinar__registration-form2-block').hide();
      });
 
@@ -228,7 +228,7 @@ var int_phone3;
     }
   
   $('.bc__btn-newsletter-subscription').click(function(e) {
-  	    e.preventDefault();
+  	e.preventDefault();
       	setHiddenFields();
         let email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         $( ".email" ).keypress(function() {
@@ -236,8 +236,8 @@ var int_phone3;
           });
     	
         $( ".email" ).focus(function() {
-             $('.email-id-error').addClass('hide');
-    		});
+            $('.email-id-error').addClass('hide');
+    	});
     
       if (!email_regex.test($(".email").val()) || $(".email").val().length == 0){
         	$('.email-id-error').removeClass('hide');
@@ -246,11 +246,11 @@ var int_phone3;
           pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/3tvfocs/");
           
           $('.webinar__loadingbar').css("display","flex");
-        	$('.newsletter-subscription-form1').submit();
+          $('.newsletter-subscription-form1').submit();
           $('.newsletter-form-step1').hide();
          
           setTimeout(function(){
-            $('.newsletter-form-step2').show();
+            $('.webinar__registration-form1-block').show();
             $('.webinar__loadingbar').hide();
           }, 200);
        }
@@ -320,23 +320,23 @@ var int_phone3;
           
           pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/340hd4j/");
           
-        	$('.webinar__registration-form1').submit();
-          $('.newsletter-form-step2').hide();
-          	setTimeout(function(){
+          $('.webinar__registration-form1').submit();
+          $('.webinar__registration-form1-block').hide();
+          setTimeout(function(){
               $('.webinar__registration-form2-block').show();
-          		$('.webinar__loadingbar').hide();
-            }, 200);
+              $('.webinar__loadingbar').hide();
+           }, 200);
          
         }
           $("input:radio[name='start-date']:first").attr("checked", true);
           $('.wr__event-start-time').val($("input:radio[name='start-date']:first").val());
-   				$('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
+   	  $('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
-   				$('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+   	  $('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
    });
   
      $('.bc__btn-select-webinar-slot').click(function(e) {
-  	    e.preventDefault();
+  	e.preventDefault();
       	setHiddenFields();
        
         let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
