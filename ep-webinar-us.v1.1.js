@@ -370,8 +370,11 @@ function daysUntil(dateString) {
           $('.webinar__loadingbar').css("display","flex");
           $('.newsletter-subscription-form1').submit();
           $('.newsletter-form-step1').hide();
-         
+          $('.webinar__lightbox-subtitle').text("Thank you for signing up to our newsletter. You can also sign up for our webinar for a session on getting into the best tech companies.");
+	  $('.webinar__lightbox-title').text("How to nail your next tech interview");
+
           setTimeout(function(){
+	    
             $('.webinar__registration-form1-block').show();
             $('.webinar__loadingbar').hide();
           }, 200);
