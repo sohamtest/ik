@@ -236,21 +236,21 @@ function isCookieSizeExceeded(){
 	  var userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36";
 
 	  if (/mobile/i.test(userAgent)) {
-	    return 'Mobile device';
+	    return 'Mobile';
 	  } else if (/tablet/i.test(userAgent)) {
-	    return 'Tablet device';
+	    return 'Tablet';
 	  } else if (/iPad/i.test(userAgent)) {
 	    return 'iPad';
 	  } else if (/iPhone/i.test(userAgent)) {
 	    return 'iPhone';
 	  } else if (/Android/i.test(userAgent)) {
-	    return 'Android device';
+	    return 'Android';
 	  } else if (/Windows/i.test(userAgent)) {
-	    return 'Windows device';
+	    return 'Windows';
 	  } else if (/Macintosh/i.test(userAgent)) {
-	    return 'Macintosh device';
+	    return 'Macintosh';
 	  } else if (/Linux/i.test(userAgent)) {
-	    return 'Linux device';
+	    return 'Linux';
 	  } else {
 	    return 'Unknown device';
 	  }
