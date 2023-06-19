@@ -39,6 +39,7 @@ function isCookieSizeExceeded(){
     utmstring.userAgent = encodeURIComponent(navigator.userAgent);
     utmstring.city = v_city;
     utmstring.device  = getDeviceType();
+    utmstring.visitor_id  = visitor_id;
     value = utmstring;
     
     if(iksutmhistory == "" || iksutmhistory == null){
@@ -74,7 +75,8 @@ function isCookieSizeExceeded(){
        "landing_page": window.location.pathname,
        "userAgent": encodeURIComponent(navigator.userAgent),
        "city": v_city,
-       "device": getDeviceType()
+       "device": getDeviceType(),
+       "visitor_id": visitor_id
     };
 
    		if(referrer == null || referrer.indexOf(window.location.host.toString()) == -1){
@@ -92,6 +94,7 @@ function isCookieSizeExceeded(){
     utmstring.userAgent = encodeURIComponent(navigator.userAgent);
     utmstring.city = v_city;
     utmstring.device  = getDeviceType();
+    utmstring.visitor_id = visitor_id;
     
     var cookie = [name, '=', JSON.stringify(utmstring), ';expires','=', expdate.toGMTString(),'; domain=.', window.location.host.toString(), '; path=/;'].join('');
     document.cookie = cookie;
