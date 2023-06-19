@@ -35,8 +35,10 @@ function isCookieSizeExceeded(){
     utmstring.timestamp = $.now();
     utmstring.ip = v_ip;
     utmstring.region = v_region;
+    utmstring.landing_page = window.location.pathname;
     utmstring.userAgent = encodeURIComponent(navigator.userAgent);
     utmstring.city = v_city;
+    utmstring.device  = getDeviceType();
     value = utmstring;
     
     if(iksutmhistory == "" || iksutmhistory == null){
@@ -69,8 +71,10 @@ function isCookieSizeExceeded(){
        "timestamp":$.now(),
        "ip": v_ip,
        "region": v_region,
+       "landing_page": window.location.pathname,
        "userAgent": encodeURIComponent(navigator.userAgent),
-       "city": v_city
+       "city": v_city,
+       "device": getDeviceType()
     };
 
    		if(referrer == null || referrer.indexOf(window.location.host.toString()) == -1){
@@ -84,8 +88,10 @@ function isCookieSizeExceeded(){
     utmstring.timestamp = $.now();
     utmstring.ip = v_ip;
     utmstring.region = v_region;
+    utmstring.landing_page = window.location.pathname;
     utmstring.userAgent = encodeURIComponent(navigator.userAgent);
     utmstring.city = v_city;
+    utmstring.device  = getDeviceType();
     
     var cookie = [name, '=', JSON.stringify(utmstring), ';expires','=', expdate.toGMTString(),'; domain=.', window.location.host.toString(), '; path=/;'].join('');
     document.cookie = cookie;
@@ -225,7 +231,31 @@ function isCookieSizeExceeded(){
       $(".l_page_url").val("ik.com"+getCookie("ik-landingpage-v2"));
   	  $('.var_localtimezone').text(utz == undefined ? "US/Pacific" : utz);
   }
-  
+
+  function getDeviceType() {
+	  var userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36";
+
+	  if (/mobile/i.test(userAgent)) {
+	    return 'Mobile device';
+	  } else if (/tablet/i.test(userAgent)) {
+	    return 'Tablet device';
+	  } else if (/iPad/i.test(userAgent)) {
+	    return 'iPad';
+	  } else if (/iPhone/i.test(userAgent)) {
+	    return 'iPhone';
+	  } else if (/Android/i.test(userAgent)) {
+	    return 'Android device';
+	  } else if (/Windows/i.test(userAgent)) {
+	    return 'Windows device';
+	  } else if (/Macintosh/i.test(userAgent)) {
+	    return 'Macintosh device';
+	  } else if (/Linux/i.test(userAgent)) {
+	    return 'Linux device';
+	  } else {
+	    return 'Unknown device';
+	  }
+}
+
   function calendlySignup(isthisForm,formstr) {
     	
     	$('.loading-overlay').css('display', 'flex');
