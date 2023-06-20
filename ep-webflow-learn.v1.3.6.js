@@ -577,8 +577,7 @@ var int_phone3;
         	$('.profile-analysis-step1').submit();
           
           setTimeout(function(){
-            window.location("/upworth?domain="+domainSelected+"&workexp="+expSelected+"&email="+$(".email").val()
-            +"&fname="+$(".first-name").val()+"&lname="+$(".last-name").val()+"&phone="+$(".phone").val());
+            location.href = '/upworth?domain="+domainSelected+"&workexp="+expSelected+"&email="+$(".email").val()+"&fname="+$(".first-name").val()+"&lname="+$(".last-name").val()+"&phone="+$(".phone").val()';
           }, 200);
          
         }
