@@ -574,10 +574,10 @@ var int_phone3;
           
        //   pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/340hd4j/");
           
-        	$('.profile-analysis-step1').submit();
-          
+        $('.profile-analysis-step1').submit();
+
           setTimeout(function(){
-            location.href = '/upworth?domain="+domainSelected+"&workexp="+expSelected+"&email="+$(".email").val()+"&fname="+$(".first-name").val()+"&lname="+$(".last-name").val()+"&phone="+$(".phone").val()';
+            location.href = "/upworth?domain="+domainSelected+"&workexp="+expSelected+"&email="+$('.email').val()+"&fname="+$('.first-name').val()+"&lname="+$('.last-name').val()+"&phone="+$('.phone').val();
           }, 200);
          
         }
