@@ -216,6 +216,9 @@ var int_phone3;
             "Event End Time" : $('.wr__event-end-time').val(),
             "Invitee Start Time" : $('.wr__invitee-start-time').val(),
             "Invitee End Time" : $('.wr__invitee-end-time').val(),
+	    "Work Experience" : $('.gql-work-experience').val(),
+	    "Domain or Role" : $('.gql-role-domain').val(),
+	    
           };
           
           $.ajax({
@@ -521,8 +524,8 @@ var int_phone3;
     }else if(domainSelected == ""){
     	$('.domain-error').removeClass('hide');
     }else{
-    	$('.work-experience').val(expSelected);
-      $('.role-domain').val(domainSelected);
+    	$('.gql-work-experience').val(expSelected);
+        $('.gql-role-domain').val(domainSelected);
     	$('.webinar__registration-form1-block-s1').hide();
     	$('.webinar__registration-form1-block-s2').show();
     }
