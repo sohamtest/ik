@@ -575,7 +575,7 @@ var int_phone3;
               'webinar_name': (document.querySelector('.webinar__lightbox-title').innerHTML)
           });
           
-       //   pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/340hd4j/");
+       pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/3hp515j/");
           
         $('.profile-analysis-step1').submit();
 
