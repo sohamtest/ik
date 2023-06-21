@@ -148,17 +148,20 @@ var int_phone3;
     xhr.send();
        
 	if($('.bye-calendly-type').val() != "NoPhoneInTheFirstStep"){
-		int_phone3 = window.intlTelInput(document.querySelector("#webinar_pnumber"), {
-		initialCountry: "auto",
-		 geoIpLookup: function(callback) {
-		    $.get('https://get.geojs.io/v1/ip/country.json', function() {}, "json").always(function(resp) {
-		      var countryCode = (resp && resp.country) ? resp.country : "us";
-		      callback(countryCode);
-		    });
-		  },
-		hiddenInput: "full",
-		utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
-	      });
+
+		if(document.querySelector("#webinar_pnumber") != null){
+			int_phone3 = window.intlTelInput(document.querySelector("#webinar_pnumber"), {
+			initialCountry: "auto",
+			 geoIpLookup: function(callback) {
+			    $.get('https://get.geojs.io/v1/ip/country.json', function() {}, "json").always(function(resp) {
+			      var countryCode = (resp && resp.country) ? resp.country : "us";
+			      callback(countryCode);
+			    });
+			  },
+			hiddenInput: "full",
+			utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
+		      });
+		}
 	}
       
      $('.btn-back-to-step1').click(function(e) {
