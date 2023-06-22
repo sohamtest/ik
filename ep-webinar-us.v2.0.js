@@ -189,9 +189,9 @@ function daysUntil(dateString) {
               let resobj = JSON.parse(this.response);
 
 	      if(webinarType == "SWITCH_UP"){
-		 resobj = resobj.map(item => ({ ...item, webinar_lead_type: "switchUp" }));
+		 resobj = resobj.map(item => ({ ...item, webinar_lead_type: "SWITCH_UP" }));
 	      }else{
-		 resobj = resobj.map(item => ({ ...item, webinar_lead_type: "interviewPrep" }));
+		 resobj = resobj.map(item => ({ ...item, webinar_lead_type: "REGULAR" }));
 	      }
 	      populateWebinarSlots(resobj);
           }else{
@@ -230,8 +230,8 @@ async function combineResponses() {
     let switchUpData = await fetchData(switchUpURL);
 
     // Add new property to each object in the arrays
-    interviewPrepData = interviewPrepData.map(item => ({ ...item, webinar_lead_type: "interviewPrep" }));
-    switchUpData = switchUpData.map(item => ({ ...item, webinar_lead_type: "switchUp" }));
+    interviewPrepData = interviewPrepData.map(item => ({ ...item, webinar_lead_type: "REGULAR" }));
+    switchUpData = switchUpData.map(item => ({ ...item, webinar_lead_type: "SWITCH_UP" }));
 
     // Filter out the entries from interviewPrepData if switchUpData has a value on the same day
     const combinedData = [...interviewPrepData];
@@ -462,7 +462,7 @@ async function combineResponses() {
             ($(".phone").val().length == 0)){
              $('.first-name-error, .last-name-error,.phone-error').removeClass('hide');
         }
-    		else if (!name_regex.test($(".first-name").val()) || $(".first-name").val().length == 0){
+    	else if (!name_regex.test($(".first-name").val()) || $(".first-name").val().length == 0){
             $('.first-name-error').removeClass('hide');
         }else if (!name_regex.test($(".last-name").val()) || $(".last-name").val().length == 0){
         	$('.last-name-error').removeClass('hide');
@@ -584,11 +584,11 @@ async function combineResponses() {
             });
           }
           
-        	$('.webinar__registration-form1').submit();
+        $('.webinar__registration-form1').submit();
           $('.webinar__registration-form1-block').hide();
           	setTimeout(function(){
               $('.webinar__registration-form2-block').show();
-          		$('.webinar__loadingbar').hide();
+          	$('.webinar__loadingbar').hide();
             }, 200);
          
         }
