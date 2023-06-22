@@ -220,8 +220,8 @@ async function fetchData(url) {
 // Function to combine the responses into one JSON array
 async function combineResponses() {
   try {
-    const interviewPrepData = await fetchData(interviewPrepURL);
-    const switchUpData = await fetchData(switchUpURL);
+    let interviewPrepData = await fetchData(interviewPrepURL);
+    let switchUpData = await fetchData(switchUpURL);
 
     // Add new property to each object in the arrays
     interviewPrepData = interviewPrepData.map(item => ({ ...item, webinar_lead_type: "interviewPrep" }));
