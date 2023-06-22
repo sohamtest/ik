@@ -229,6 +229,7 @@ async function combineResponses() {
 
     // Filter out the entries from interviewPrepData if switchUpData has a value on the same day
     const combinedData = [...interviewPrepData];
+	  
     for (const switchUpEntry of switchUpData) {
       const sameDayEntryIndex = combinedData.findIndex((entry) => entry.day === switchUpEntry.day);
       if (sameDayEntryIndex !== -1) {
@@ -236,6 +237,8 @@ async function combineResponses() {
       }
       combinedData.push(switchUpEntry);
     }
+    // Sort the combinedData array by start_time
+    combinedData.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
 
     return combinedData;
   } catch (error) {
@@ -272,7 +275,7 @@ async function combineResponses() {
             "Email Address": $('.email').val(),
             "ByeCalendlyType": $('.bye-calendly-type').val(),
             "webinar-type": $('.webinar-type').val(),
-            
+            "Webinar Lead Type": $('.webinar-lead-type').val(),
             "utm_source": $('.utm_source').val(),
             "utm_medium": $('.utm_medium').val(),
             "utm_campaign": $('.utm_campaign').val(),
@@ -392,6 +395,7 @@ async function combineResponses() {
    	  $('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
    	  $('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+	  $('.webinar-lead-type').val($("input:radio[name='start-date']:first").data('webinar_lead_type'));
    });
   
   $('.bc__btn-newsletter-subscription').click(function(e) {
@@ -503,6 +507,7 @@ async function combineResponses() {
    	  $('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
    	  $('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+	  $('.webinar-lead-type').val($("input:radio[name='start-date']:first").data('webinar_lead_type'));
    });
   
   $('.bc__btn-select-webinar-slot').click(function(e) {
@@ -583,9 +588,10 @@ async function combineResponses() {
         }
           $("input:radio[name='start-date']:first").attr("checked", true);
           $('.wr__event-start-time').val($("input:radio[name='start-date']:first").val());
-   				$('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
+   	  $('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
-   				$('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+   	  $('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+	  $('.webinar-lead-type').val($("input:radio[name='start-date']:first").data('webinar_lead_type'));
      });
   
      $('.bc__btn-2nd-step').click(function(e) {
@@ -611,6 +617,7 @@ async function combineResponses() {
     	    $('.wr__event-end-time').val(eendtime);
             $('.wr__invitee-start-time').val($("input[name='start-date']:checked").data('invitee_starttime'));
    	    $('.wr__invitee-end-time').val($("input[name='start-date']:checked").data('invitee_endtime'));
+	    $('.webinar-lead-type').val($("input[name='start-date']:checked").data('webinar_lead_type'));
 	    
             $('.webinar__loadingbar').show();
 		
