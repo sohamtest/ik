@@ -223,6 +223,10 @@ async function combineResponses() {
     const interviewPrepData = await fetchData(interviewPrepURL);
     const switchUpData = await fetchData(switchUpURL);
 
+    // Add new property to each object in the arrays
+    interviewPrepData = interviewPrepData.map(item => ({ ...item, webinar_lead_type: "interviewPrep" }));
+    switchUpData = switchUpData.map(item => ({ ...item, webinar_lead_type: "switchUp" }));
+
     // Filter out the entries from interviewPrepData if switchUpData has a value on the same day
     const combinedData = [...interviewPrepData];
     for (const switchUpEntry of switchUpData) {
