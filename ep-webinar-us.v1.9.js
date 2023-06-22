@@ -187,7 +187,13 @@ function daysUntil(dateString) {
           xhr.onload = function(){
             if(this.status == 200){
               let resobj = JSON.parse(this.response);
-              populateWebinarSlots(resobj);
+
+	      if(webinarType == "SWITCH_UP"){
+		 resobj = resobj.map(item => ({ ...item, webinar_lead_type: "switchUp" }));
+	      }else{
+		 resobj = resobj.map(item => ({ ...item, webinar_lead_type: "interviewPrep" }));
+	      }
+	      populateWebinarSlots(resobj);
           }else{
             registration_type = "calendly";
           }
@@ -344,7 +350,7 @@ async function combineResponses() {
             ($(".email").val().length == 0)){
              $('.first-name-error, .last-name-error,.email-id-error').removeClass('hide');
         }
-    		else if (!name_regex.test($(".first-name").val()) || $(".first-name").val().length == 0){
+    	else if (!name_regex.test($(".first-name").val()) || $(".first-name").val().length == 0){
             $('.first-name-error').removeClass('hide');
         }else if (!name_regex.test($(".last-name").val()) || $(".last-name").val().length == 0){
         	$('.last-name-error').removeClass('hide');
