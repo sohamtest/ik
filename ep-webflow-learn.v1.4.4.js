@@ -237,8 +237,13 @@ function populateWebinarSlots(resobj){
   function pushToEndPoint(endpoint){
     //Zap end point for step 1
           let eventName;
+	  
           if(webinarType == "SWITCH_UP"){
-            eventName = "Upgrade Your Career: Conversation on Studying ML & New Domains";
+	    if($('.webinar-lead-type').val() == "SWITCH_UP"){
+            	eventName = "Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains";
+	    }else{
+		eventName = "How to Nail your next Technical Interview";
+	    }
           }else if(webinarType == "CAREER_SESSION"){
             eventName = "AI Advantage: Strategies to secure more interviews";
           }else{
