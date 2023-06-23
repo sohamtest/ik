@@ -1,5 +1,5 @@
 var no_of_webinar_slots = 6;
-var interviewPrepURL,switchUpURL,tz;
+var interviewPrepURL,switchUpURL;
 
 $(document).ready(function() {
 var int_phone3;
@@ -16,7 +16,7 @@ var int_phone3;
   let xhr = new XMLHttpRequest();
     xhr.open('GET',api_url,true);
     xhr.setRequestHeader("Authorization","1Cgx6oYXkOlWkNDn7_tXO");
-    tz = new Date().toString().match(/\((.+)\)/);
+    var tz = new Date().toString().match(/\((.+)\)/);
       if (tz[1].includes(" ")) {
         tz = tz[1]
           .split(" ")
@@ -52,6 +52,7 @@ var int_phone3;
         populateWebinarSlots(data);
       });
   }
+});
   
     if(document.querySelector("#webinar_pnumber") != null){
       int_phone3 = window.intlTelInput(document.querySelector("#webinar_pnumber"), {
@@ -252,17 +253,17 @@ async function combineResponses() {
         	$('.webinar__registration-form1').submit();
           $('.webinar__registration-form1-block').hide();
           
-          	setTimeout(function(){
+           setTimeout(function(){
               $('.webinar__registration-form2-block').show();
-          		$('.webinar__loadingbar').hide();
+              $('.webinar__loadingbar').hide();
             }, 200);
          
         }
           $("input:radio[name='start-date']:first").attr("checked", true);
           $('.wr__event-start-time').val($("input:radio[name='start-date']:first").val());
-   				$('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
+   	  $('.wr__event-end-time').val($("input:radio[name='start-date']:first").data('endtime'));
           $('.wr__invitee-start-time').val($("input:radio[name='start-date']:first").data('invitee_starttime'));
-   				$('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
+   	  $('.wr__invitee-end-time').val($("input:radio[name='start-date']:first").data('invitee_endtime'));
           $('.webinar-lead-type').val($("input[name='start-date']:checked").data('webinar_lead_type'));
 
           $('.wr__whatsappconsent').val($('.whatsapp-consent').is(":checked"));
@@ -294,4 +295,4 @@ async function combineResponses() {
             }, 400);
         }
      });
-});
+
