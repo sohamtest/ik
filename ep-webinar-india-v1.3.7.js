@@ -8,7 +8,6 @@ var int_phone3;
       $('body').css('overflow','auto');
   });
   
- const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   if(isSwitchUp == "No"){
    let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=IND&program=Backend&timezone="+v_timezone+"&type="+webinarType;
@@ -75,6 +74,8 @@ var int_phone3;
      });
 
 function populateWebinarSlots(resobj){
+	const t_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 	no_of_webinar_slots = (no_of_webinar_slots == undefined) ? 4 : no_of_webinar_slots;
 	let nslots = (resobj.length > no_of_webinar_slots) ? no_of_webinar_slots : resobj.length;
 	
