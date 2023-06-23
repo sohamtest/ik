@@ -274,7 +274,19 @@ async function combineResponses() {
      });
 	
     function pushToEndPoint(endpoint){
-    //Zap end point for step 1
+	  let eventName;
+	  if(webinarType == "SWITCH_UP"){
+	    if($('.webinar-lead-type').val() == "SWITCH_UP"){
+            	eventName = "Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains";
+	    }else{
+		eventName = "How to Nail your next Technical Interview";
+	    }
+	  }else if(webinarType == "CAREER_SESSION"){
+	    eventName = "AI Advantage: Strategies to secure more interviews";
+	  }else{
+	    eventName = "How to Nail your next Technical Interview";
+	  }
+	    
           var formData = {
             "First Name": $('.wr__firstname').val(), 
             "Last Name": $('.wr__lastname').val(),
@@ -296,7 +308,7 @@ async function combineResponses() {
             
             "cta_page_url": $('.cta_page_url').val(),
             "landing_page_url": $('.l_page_url').val(),
-            "event_name": "How to Nail your next Technical Interview",
+            "event_name": eventName,
             "user_timezone": $('.user_timezone').val(),
             "page_url": $('.page_url').val(),
             "site_url": $('.site_url').val(),
