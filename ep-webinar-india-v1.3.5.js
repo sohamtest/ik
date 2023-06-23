@@ -1,10 +1,10 @@
 var no_of_webinar_slots = 6;
-var interviewPrepURL,switchUpURL;
+var interviewPrepURL,switchUpURL,tz;
 
 $(document).ready(function() {
 var int_phone3;
   $('.webinar-lightbox-close').click(function(e) {
-  		$('.webinar__lightbox').css('display','none');
+      $('.webinar__lightbox').css('display','none');
       $('body').css('overflow','auto');
   });
   
@@ -16,7 +16,7 @@ var int_phone3;
   let xhr = new XMLHttpRequest();
     xhr.open('GET',api_url,true);
     xhr.setRequestHeader("Authorization","1Cgx6oYXkOlWkNDn7_tXO");
-    var tz = new Date().toString().match(/\((.+)\)/);
+    tz = new Date().toString().match(/\((.+)\)/);
       if (tz[1].includes(" ")) {
         tz = tz[1]
           .split(" ")
@@ -74,16 +74,16 @@ var int_phone3;
      });
 
 function populateWebinarSlots(resobj){
-        no_of_webinar_slots = (no_of_webinar_slots == undefined) ? 4 : no_of_webinar_slots;
-        let nslots = (resobj.length > no_of_webinar_slots) ? no_of_webinar_slots : resobj.length;
-        
-        for (i=0;i<nslots;i++){
-          var hdate = resobj[i].weekday +", "+ resobj[i].day + " " + t_months[parseInt(resobj[i].month)-1] + " "+ resobj[i].year + " | " + resobj[i].hour +":" + resobj[i].minute +" "+resobj[i].am_or_pm;
+	no_of_webinar_slots = (no_of_webinar_slots == undefined) ? 4 : no_of_webinar_slots;
+	let nslots = (resobj.length > no_of_webinar_slots) ? no_of_webinar_slots : resobj.length;
+	
+	for (i=0;i<nslots;i++){
+	  var hdate = resobj[i].weekday +", "+ resobj[i].day + " " + t_months[parseInt(resobj[i].month)-1] + " "+ resobj[i].year + " | " + resobj[i].hour +":" + resobj[i].minute +" "+resobj[i].am_or_pm;
 	  var radiohtml = '<label class="select-webinar-slot w-radio"><input type="radio" name="start-date" value="'+ resobj[i].start_time +'" data-endtime="'+resobj[i].end_time+'" data-invitee_starttime="'+ resobj[i].invitee_start_time +'" data-invitee_endtime="'+ resobj[i].invitee_end_time +'" data-name="'+ resobj[i].start_time +'" data-webinar_lead_type="'+ resobj[i].webinar_lead_type +'" class="w-form-formradioinput select-webinar-radio-btn w-radio-input"><span class="w-form-label" for="start-date-'+i+'">'+hdate+' '+ tz +'</span></label>';
-          $('.webinar__slots').append(
-            $(radiohtml)
-          );
-        }
+	  $('.webinar__slots').append(
+	    $(radiohtml)
+	  );
+	}
 }
 
 // Function to fetch data from an API
@@ -134,7 +134,7 @@ async function combineResponses() {
   	    if($('.webinar-lead-type').val() == "SWITCH_UP"){
               	eventName = "Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains";
   	    }else{
-  		        eventName = "How to Nail your next Technical Interview";
+  		eventName = "How to Nail your next Technical Interview";
   	    }
   	  }else if(webinarType == "CAREER_SESSION"){
   	        eventName = "AI Advantage: Strategies to secure more interviews";
@@ -192,7 +192,7 @@ async function combineResponses() {
     }
   
      $('.bc__btn-select-webinar-slot').click(function(e) {
-  			e.preventDefault();
+  	e.preventDefault();
       	//setHiddenFields();
        
         let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
@@ -205,7 +205,7 @@ async function combineResponses() {
     	
         $( ".full-name, .phone, .email" ).focus(function() {
              $('.full-name-error, .email-id-error,.phone-error').addClass('hide');
-    		});
+    	});
         
         //let active_visit = read_cookie("v_latest");
         let name_regex = new RegExp("^[a-zA-Z ]+$");
