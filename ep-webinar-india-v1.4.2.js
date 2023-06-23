@@ -208,7 +208,7 @@ async function combineResponses() {
   
      $('.bc__btn-select-webinar-slot').click(function(e) {
   	e.preventDefault();
-      	//setHiddenFields();
+      	setHiddenFields();
        
         let fullphonenumber3 = int_phone3.getNumber(intlTelInputUtils.numberFormat.E164);
         $("input[name='phone_number[intphone_full]'").val(fullphonenumber3);
@@ -286,6 +286,7 @@ async function combineResponses() {
  
      $('.bc__btn-2nd-step').click(function(e) {
      		e.preventDefault();
+	     setHiddenFields();
         if($("input:radio[name='start-date']").is(":checked")) {
             let estarttime = $('input[name="start-date"]:checked').val();
             let eendtime = $('input[name="start-date"]:checked').data('endtime');
