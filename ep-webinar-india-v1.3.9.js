@@ -16,12 +16,12 @@ var int_phone3;
     xhr.open('GET',api_url,true);
     xhr.setRequestHeader("Authorization","1Cgx6oYXkOlWkNDn7_tXO");
     //var tz = new Date().toString().match(/\((.+)\)/);
-      if (tz[1].includes(" ")) {
+    /*  if (tz[1].includes(" ")) {
         tz = tz[1]
           .split(" ")
           .map(([first]) => first)
           .join("");
-      }
+      }*/
 
     xhr.onload = function(){
       if(this.status == 200){
@@ -79,6 +79,12 @@ function populateWebinarSlots(resobj){
 	no_of_webinar_slots = (no_of_webinar_slots == undefined) ? 4 : no_of_webinar_slots;
 	let nslots = (resobj.length > no_of_webinar_slots) ? no_of_webinar_slots : resobj.length;
 	var tz = new Date().toString().match(/\((.+)\)/);
+	if (tz[1].includes(" ")) {
+        tz = tz[1]
+          .split(" ")
+          .map(([first]) => first)
+          .join("");
+      	}
 	
 	for (i=0;i<nslots;i++){
 	  var hdate = resobj[i].weekday +", "+ resobj[i].day + " " + t_months[parseInt(resobj[i].month)-1] + " "+ resobj[i].year + " | " + resobj[i].hour +":" + resobj[i].minute +" "+resobj[i].am_or_pm;
