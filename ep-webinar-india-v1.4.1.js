@@ -26,6 +26,11 @@ var int_phone3;
     xhr.onload = function(){
       if(this.status == 200){
         let resobj = JSON.parse(this.response);
+	if(webinarType == "SWITCH_UP"){
+		resobj = resobj.map(item => ({ ...item, webinar_lead_type: "SWITCH_UP" }));
+	      }else{
+		 resobj = resobj.map(item => ({ ...item, webinar_lead_type: "REGULAR" }));
+	      }
         populateWebinarSlots(resobj);
       }else{
         console.error("P0: The Uplevel Webinar Slots API Failed."); 
