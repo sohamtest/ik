@@ -253,7 +253,7 @@ function populateWebinarSlots(resobj){
           var formData = {
             "First Name": $('.wr__firstname').val(), 
             "Last Name": $('.wr__lastname').val(),
-            "Email Address": $('.email').val(),
+            "Email Address": $('.wr__email').val(),
             "ByeCalendlyType": $('.bye-calendly-type').val(),
             "webinar-type": $('.webinar-type').val(),
             "Webinar Lead Type": $('.webinar-lead-type').val(),
