@@ -612,6 +612,23 @@ async function combineResponses() {
 	  $('.webinar-lead-type').val($("input:radio[name='start-date']:first").data('webinar_lead_type'));
      });
 
+$('.bc__upworth-next').click(function(e){
+  	e.preventDefault();
+  	let expSelected = $('.gql-exp-select').val();
+    let domainSelected = $('.gql-domain-select').val();
+    
+    if(expSelected == ""){
+    	$('.work-exp-error').removeClass('hide');
+    }else if(domainSelected == ""){
+    	$('.domain-error').removeClass('hide');
+    }else{
+    	$('.gql-work-experience').val(expSelected);
+        $('.gql-role-domain').val(domainSelected);
+    	$('.webinar__registration-form1-block-s1').hide();
+    	$('.webinar__registration-form1-block-s2').show();
+    }
+  });
+	
 $('.bc__upworth-step2').click(function(e){
   e.preventDefault();
   setHiddenFields();
