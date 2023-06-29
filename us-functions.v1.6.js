@@ -235,13 +235,16 @@ function isCookieSizeExceeded(){
       $(".landing_page").val("ik.com"+getCookie("ik-landingpage-v2"));
       $(".cta_page_url").val("ik.com"+cta_lp),
       $(".l_page_url").val("ik.com"+getCookie("ik-landingpage-v2"));
-  	  $('.var_localtimezone').text(utz == undefined ? "US/Pacific" : utz);
+      $('.var_localtimezone').text(utz == undefined ? "US/Pacific" : utz);
+
+      $('.wr__referrer').val(referrer);
+      $('.wr__device').val(getDeviceType());
   }
 
 function getDeviceType() {
   var userAgent = navigator.userAgent;
   if (/mobile/i.test(userAgent)) {
-    return 'Mobile Device';
+    return 'Mobile';
   } else if (/iPad|Android|Touch/i.test(userAgent)) {
     return 'Tablet';
   } else {
