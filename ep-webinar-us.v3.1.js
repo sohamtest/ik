@@ -145,7 +145,8 @@ function daysUntil(dateString) {
     let forceUSwebinarFlag = getAllUrlParams();
 
     if((forceUSwebinarFlag['startdate'] != undefined) && (forceUSwebinarFlag['enddate'] != undefined)){
-      resobj = getItemsByDateRange(forceUSwebinarFlag['startdate'],forceUSwebinarFlag['enddate'],resobj);
+      let newresobj = getItemsByDateRange(forceUSwebinarFlag['startdate'],forceUSwebinarFlag['enddate'],resobj);
+      resobj = (newresobj.length == 0) ? resobj : newresobj;
     }
     
     if(resobj.length == 0){
