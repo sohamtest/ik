@@ -14,7 +14,18 @@ function getDeviceType() {
 
 $(document).ready(function() {
 var int_phone3;
-  
+
+if(webinarType == "CAREER_SESSION"){
+	$(".webinar__lightbox-title").text("Seize the AI Advantage: Strengthen Your Resume");
+	$('input[name="Event Name"]').val("Seize the AI Advantage: Strengthen Your Resume");
+}else if(webinarType == "SWITCH_UP"){
+	$(".webinar__lightbox-title").text("Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains");
+	$('input[name="Event Name"]').val("Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains");
+}else{
+	$(".webinar__lightbox-title").text("How to Nail your next Technical Interview");
+	$('input[name="Event Name"]').val("How to Nail your next Technical Interview");
+}
+	
   $('.webinar-lightbox-close').click(function(e) {
       if(experiment_type == "ExitIntent"){
         $('.webinar__lightbox-card').css('display','none');
