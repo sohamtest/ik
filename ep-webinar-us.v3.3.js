@@ -295,11 +295,7 @@ async function combineResponses() {
     function pushToEndPoint(endpoint){
 	  let eventName;
 	  if(webinarType == "SWITCH_UP"){
-	    if($('.webinar-lead-type').val() == "SWITCH_UP"){
-            	eventName = "Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains";
-	    }else{
-		eventName = "How to Nail your next Technical Interview";
-	    }
+	    eventName = "Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains";
 	  }else if(webinarType == "CAREER_SESSION"){
 	    eventName = "AI Advantage: Strategies to secure more interviews";
 	  }else{
