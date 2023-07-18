@@ -8,20 +8,19 @@ $(document).ready(function(){
     
       const rows = [
         { 
-          utm_source: clickhistory['utm_source'],
-          utm_medium: clickhistory['utm_medium'],
-          utm_campaign: clickhistory['utm_campaign'],
-          utm_adset: clickhistory['utm_adset'],
-          utm_content: clickhistory['utm_content'],
-          utm_term: clickhistory['utm_term'],
-          timestamp: clickhistory['timestamp'],
+          UTM_Source: clickhistory['utm_source'],
+          UTM_Medium: clickhistory['utm_medium'],
+          UTM_Campaign: clickhistory['utm_campaign'],
+          UTM_Content: clickhistory['utm_content'],
+          UTM_Term: clickhistory['utm_term'],
+          Lead_Created_Time: clickhistory['timestamp'],
           ip: clickhistory['ip'],
-          region: clickhistory['region'],
-          landing_page: clickhistory['landing_page'],
+          Region: clickhistory['region'],
+          Landing_Page: clickhistory['landing_page'],
           userAgent: clickhistory['userAgent'],
           city: clickhistory['city'],
           device: clickhistory['device'],
-          visitor_id: clickhistory['visitor_id'],
+          User_ID: clickhistory['visitor_id'],
           referrer: clickhistory['referrer']
         }
       ];
