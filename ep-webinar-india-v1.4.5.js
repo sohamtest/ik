@@ -77,7 +77,7 @@ function populateWebinarSlots(resobj){
   let utmparams = getUTMParams();
   
   if((utmparams['startdate'] != undefined) && (utmparams['enddate'] != undefined)){
-      let newresobj = getItemsByDateRange(forceUSwebinarFlag['startdate'],forceUSwebinarFlag['enddate'],resobj);
+      let newresobj = getItemsByDateRange(utmparams['startdate'],utmparams['enddate'],resobj);
       resobj = (newresobj.length == 0) ? resobj : newresobj;
     }
   
@@ -112,7 +112,7 @@ function getItemsByDateRange(startDate, endDate, data) {
     var endDate = new Date(endDate);
 
     return $.grep(data, function(item) {
-        var itemDate = new Date(item.utc_start_time);
+        var itemDate = new Date(item.start_time);
         return itemDate >= startDate && itemDate <= endDate;
     });
 }
