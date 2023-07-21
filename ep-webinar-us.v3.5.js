@@ -232,6 +232,7 @@ $('.tab-switchup').click(function(){
   webinarType="SWITCH_UP";
   let slotscountrycode = (v_country == "India") ? "IND" : "USA";
   $("html, body").animate({ scrollTop: 0 }, "slow");
+  $('.webinar__slots').empty();
   createWebinarSlotsList(slotscountrycode,v_timezone);
 });
 
@@ -239,6 +240,7 @@ $('.tab-regular').click(function(){
   webinarType="REGULAR";
   let slotscountrycode = (v_country == "India") ? "IND" : "USA";
   $("html, body").animate({ scrollTop: 0 }, "slow");
+  $('.webinar__slots').empty();
   createWebinarSlotsList(slotscountrycode,v_timezone);
 });
   
