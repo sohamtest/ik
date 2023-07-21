@@ -188,6 +188,8 @@ function daysUntil(dateString) {
     v_timezone_formatted  = timezone.replace("+", "%2B");
     webinarType = (webinarType == undefined) ? "REGULAR" : "SWITCH_UP";
     
+    console.log("webinarType"+webinarType);
+	  
     if(isSwitchUp == "No"){
         let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country="+country+"&program=Backend&timezone="+v_timezone_formatted+"&type="+webinarType;
         let xhr = new XMLHttpRequest();
