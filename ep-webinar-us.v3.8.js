@@ -185,10 +185,12 @@ function daysUntil(dateString) {
 
   function createWebinarSlotsList(country, timezone){
     
-    console.log("webinarType"+webinarType);
+    console.log("webinarType: "+webinarType);
     
     v_timezone_formatted  = timezone.replace("+", "%2B");
     webinarType = (webinarType == undefined) ? "REGULAR" : "SWITCH_UP";
+
+    console.log("webinarType4: "+webinarType);
 
     if(isSwitchUp == "No"){
         let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country="+country+"&program=Backend&timezone="+v_timezone_formatted+"&type="+webinarType;
