@@ -185,11 +185,11 @@ function daysUntil(dateString) {
 
   function createWebinarSlotsList(country, timezone){
     
+    console.log("webinarType"+webinarType);
+    
     v_timezone_formatted  = timezone.replace("+", "%2B");
     webinarType = (webinarType == undefined) ? "REGULAR" : "SWITCH_UP";
-    
-    console.log("webinarType"+webinarType);
-	  
+
     if(isSwitchUp == "No"){
         let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country="+country+"&program=Backend&timezone="+v_timezone_formatted+"&type="+webinarType;
         let xhr = new XMLHttpRequest();
@@ -235,6 +235,7 @@ $('.tab-switchup').click(function(){
   let slotscountrycode = (v_country == "India") ? "IND" : "USA";
   $("html, body").animate({ scrollTop: 0 }, "slow");
   $('.webinar__slots').empty();
+  console.log("webinarType2"+webinarType);
   createWebinarSlotsList(slotscountrycode,v_timezone);
 });
 
@@ -243,6 +244,7 @@ $('.tab-regular').click(function(){
   let slotscountrycode = (v_country == "India") ? "IND" : "USA";
   $("html, body").animate({ scrollTop: 0 }, "slow");
   $('.webinar__slots').empty();
+  console.log("webinarType3"+webinarType);
   createWebinarSlotsList(slotscountrycode,v_timezone);
 });
   
