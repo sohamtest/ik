@@ -188,7 +188,7 @@ function daysUntil(dateString) {
     console.log("webinarType: "+webinarType);
     
     v_timezone_formatted  = timezone.replace("+", "%2B");
-    webinarType = (webinarType == undefined) ? "REGULAR" : "SWITCH_UP";
+    webinarType = (webinarType == undefined || webinarType == "REGULAR") ? "REGULAR" : "SWITCH_UP";
 
     console.log("webinarType4: "+webinarType);
 
