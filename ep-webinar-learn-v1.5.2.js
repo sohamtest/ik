@@ -33,9 +33,9 @@ if(webinarType == "CAREER_SESSION"){
 	  $('input[name="Event Name"]').val(decodeURIComponent(utmpams['event']));
     eventName = decodeURIComponent(utmpams['event']);
   }else{
-    $(".webinar__lightbox-title").text("Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains");
-	  $('input[name="Event Name"]').val("Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains");
-    eventName = "Upgrade Your Career: Conversation on AI/ML, Data Science & New Domains";
+    $(".webinar__lightbox-title").text("Future-proof your career with AI/ ML, Data Science");
+    $('input[name="Event Name"]').val("Future-proof your career with AI/ ML, Data Science");
+    eventName = "Future-proof your career with AI/ ML, Data Science";
   }
 }else{
   if (utmpams['event'] != undefined){
