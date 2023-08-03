@@ -3,7 +3,7 @@ var interviewPrepURL,switchUpURL;
 
 $(document).ready(function() {
 var int_phone3;
-let utmpams = getAllUrlParams();
+let utmpams = getUTMParams();
 
 if(webinarType == "CAREER_SESSION"){
   if (utmpams['event_title'] != undefined){
