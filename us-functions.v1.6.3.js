@@ -217,25 +217,21 @@ function isCookieSizeExceeded(){
       	$('.v_country').val(v_country);
         $('.user_timezone').val(v_timezone);
       }
-	  
-      if(params?.utm_source != undefined){
-        console.log("params3: "+params['utm_source']);
-      }
-    
-      $('.utm_source').val(decodeURIComponent((params['utm_source'] != undefined) ? params['utm_source'] : "Organic"));
-      $('.utm_medium').val(decodeURIComponent((params['utm_medium'] != undefined) ? params['utm_medium'] : ""));
-      $('.utm_campaign').val(decodeURIComponent((params['utm_campaign'] != undefined) ? params['utm_campaign'] : ""));
-      $('.utm_adset').val(decodeURIComponent((params['utm_adset'] != undefined) ? params['utm_adset'] : ""));
-      $('.utm_content').val(decodeURIComponent((params['utm_content'] != undefined) ? params['utm_content'] : ""));
-      $('.utm_term').val(decodeURIComponent((params['utm_term'] != undefined) ? params['utm_term'] : ""));
+	
+      $('.utm_source').val(decodeURIComponent((params?.utm_source != undefined) ? params['utm_source'] : "Organic"));
+      $('.utm_medium').val(decodeURIComponent((params?.utm_medium != undefined) ? params['utm_medium'] : ""));
+      $('.utm_campaign').val(decodeURIComponent((params?.utm_campaign != undefined) ? params['utm_campaign'] : ""));
+      $('.utm_adset').val(decodeURIComponent((params?.utm_adset != undefined) ? params['utm_adset'] : ""));
+      $('.utm_content').val(decodeURIComponent((params?.utm_content != undefined) ? params['utm_content'] : ""));
+      $('.utm_term').val(decodeURIComponent((params?.utm_term != undefined) ? params['utm_term'] : ""));
       
       $('.page_url').val(window.location.href);
       $('.webinar-type').val(((webinarType == undefined) || (webinarType == "REGULAR")) ? "REGULAR" : "SWITCH_UP");
       $('.user_id').val(visitor_id);
-      $('.gclid').val(decodeURIComponent((params['gclid'] != undefined) ? params['gclid'] : ""));
-      $('.salesforce_uuid').val(decodeURIComponent((params['salesforce_uuid'] != undefined) ? params['salesforce_uuid'] : ""));
-      $('.msclkid').val(decodeURIComponent((params['msclkid'] != undefined) ? params['msclkid'] : ""));
-      $('.fbclid').val(decodeURIComponent((params['fbclid'] != undefined) ? params['fbclid'] : ""));
+      $('.gclid').val(decodeURIComponent((params?.gclid != undefined) ? params['gclid'] : ""));
+      $('.salesforce_uuid').val(decodeURIComponent((params?.salesforce_uuid != undefined) ? params['salesforce_uuid'] : ""));
+      $('.msclkid').val(decodeURIComponent((params?.msclkid != undefined) ? params['msclkid'] : ""));
+      $('.fbclid').val(decodeURIComponent((params?.fbclid != undefined) ? params['fbclid'] : ""));
       $(".landing_page").val("ik.com"+getCookie("ik-landingpage-v2"));
       $(".cta_page_url").val("ik.com"+cta_lp),
       $(".l_page_url").val("ik.com"+getCookie("ik-landingpage-v2"));
