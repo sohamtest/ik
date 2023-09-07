@@ -217,10 +217,7 @@ function isCookieSizeExceeded(){
       	$('.v_country').val(v_country);
         $('.user_timezone').val(v_timezone);
       }
-
-      console.log("params1: "+params);
-      console.log("params2: "+params['utm_source']);
-
+	  
       if(params?.utm_source != undefined){
         console.log("params3: "+params['utm_source']);
       }
