@@ -237,7 +237,7 @@ $(document).ready(function () {
       var currentDate = new Date();
       var formattedDateTime = formatDateTime(currentDate);
       let utmparams = getAllUrlParams();
-      $(".wr__fullName").val($(fullName).val());
+      $(".wr__fullName").val($(nameSelector).val());
       $(".wq_question1").val($('input[name="Question1"]:checked').val());
       $(".wq_question2").val($('input[name="Question2"]:checked').val());
       $(".wq_question3").val($('input[name="Question3"]:checked').val());
