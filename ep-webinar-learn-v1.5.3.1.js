@@ -1,11 +1,9 @@
 /**
  * Minified by jsDelivr using Terser v5.19.2.
  * Original file: /gh/kothinti/ik@master/ep-webinar-learn-v1.5.3.js
- *
  * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
  */
 var experiment_type, exitintent_freecourse, v_timezone_formatted, interviewPrepURL, switchUpURL;
-
 function getDeviceType() {
   var e = navigator.userAgent;
   return /mobile/i.test(e) ? "Mobile" : /iPad|Android|Touch/i.test(e) ? "Tablet" : "Desktop"
@@ -304,10 +302,38 @@ $(document).ready((function () {
         n = visitor_id + ":" + v_country,
         i = v_timezone + ":learn.ik" + cta_lp + ":learn.ik" + getCookie("ik-landingpage-v2"),
         r = "?utm_source=" + $(".utm_source").val() + "&assigned_to=Interview Kickstart&invitee_first_name=" + $(".wr__firstname").val() + "&invitee_last_name=" + $(".wr__lastname").val() + "&invitee_email=" + $(".wr__email").val() + "&answer_1=" + $(".wr__phone").val() + "&event_start_time=" + t + "&event_end_time=" + a + "&utm_medium=" + n + "&salesforce_uuid=" + i;
-      e = "NoPhoneInTheFirstStep" == $(".bye-calendly-type").val() ? "https://www.interviewkickstart.com/signup-final-step-v6" + r : "https://ikdev.webflow.io/signup-final-step" + "?utm_source=" + $(".utm_source").val() + "&utm_medium=" + n + "&salesforce_uuid=" + i, $(".wr__event-start-time").val(t), $(".wr__event-end-time").val(a), $(".wr__invitee-start-time").val($("input[name='start-date']:checked").data("invitee_starttime")), $(".wr__invitee-end-time").val($("input[name='start-date']:checked").data("invitee_endtime")), $(".webinar-lead-type").val($("input[name='start-date']:checked").data("webinar_lead_type")), $(".webinar__loadingbar").show(), s("https://hooks.zapier.com/hooks/catch/11068981/340hl1a/"), $(".webinar__registration-form2").submit(), bake_cookie("v_history", ""), bake_cookie("v_latest", ""), 1 != singlesignup ? setTimeout((function () {
+      e = "NoPhoneInTheFirstStep" == $(".bye-calendly-type").val() ? "https://www.interviewkickstart.com/signup-final-step-v6" + r : "https://www.interviewkickstart.com/signup-final-step" + "?utm_source=" + $(".utm_source").val() + "&utm_medium=" + n + "&salesforce_uuid=" + i, $(".wr__event-start-time").val(t), $(".wr__event-end-time").val(a), $(".wr__invitee-start-time").val($("input[name='start-date']:checked").data("invitee_starttime")), $(".wr__invitee-end-time").val($("input[name='start-date']:checked").data("invitee_endtime")), $(".webinar-lead-type").val($("input[name='start-date']:checked").data("webinar_lead_type")), $(".webinar__loadingbar").show(), s("https://hooks.zapier.com/hooks/catch/11068981/340hl1a/"), $(".webinar__registration-form2").submit(), bake_cookie("v_history", ""), bake_cookie("v_latest", ""), 1 != singlesignup ? setTimeout((function () {
         location.href = e
       }), 800) : ($(".webinar__loadingbar").hide(), $(".webinar__registration-form2-block").hide(), $(".webinar__registration-form3-block").show())
     }
+    const previousData = {
+      firstName: $('.wr__firstname').val(),
+      lastName: $('.wr__lastname').val(),
+      email: $('.wr__email').val(),
+      phone: $('.wr__phone').val(),
+      city: $('.wr__city').val(),
+      device: $('.wr__device').val(),
+      region: $('.wr__region').val(),
+      eventStartTime: $('.wr__event-start-time').val(),
+      eventEndTime: $('.wr__event-end-time').val(),
+      inviteeStartTime: $('.wr__invitee-start-time').val(),
+      inviteeEndTime: $('.wr__invitee-end-time').val(),
+      learnUserId: $('.user_id').val(),
+    };
+    var jsonData = JSON.stringify(previousData);
+    var cookieName = "previousData";
+    var cookieValue = encodeURIComponent(jsonData);
+    var expirationTime = new Date(new Date().getTime() + 10 * 365 * 24 * 60 * 60 * 1000);
+
+    var currentHostname = window.location.hostname;
+    var hostnameParts = currentHostname.split('.');
+    if (hostnameParts.length > 1) {
+      hostnameParts.shift();
+    }
+    var domain = hostnameParts.join('.');
+    setTimeout(() => {
+      console.log('---SET COOKIES---', domain);
+      document.cookie = cookieName + "=" + cookieValue + "; expires=" + expirationTime + "; path=/; domain=" + domain;
+    }, 500)
   }))
 }));
-//# sourceMappingURL=/sm/c70c7c39d8df4599ed5307d14baa3077610c91a831d7cc6512b683f810eaf74b.map
