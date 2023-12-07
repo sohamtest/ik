@@ -15,7 +15,7 @@ $(document).ready(function () {
       $('input[name="Event Name"]').val("Seize the AI Advantage: Strengthen Your Resume");
       eventName = "Seize the AI Advantage: Strengthen Your Resume";
     }
-  } else if (webinarType == "REGULAR") {
+  } else if (webinarType == "SWITCH_UP") {
     if (utmpams['event_title'] != undefined) {
       $(".webinar__lightbox-title").text(decodeURIComponent(utmpams['event_title']));
       $('input[name="Event Name"]').val(decodeURIComponent(utmpams['event_title']));
