@@ -687,9 +687,7 @@ $(document).ready(function () {
       });
 
       pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/3hp515j/");
-
       $('.profile-analysis-step1').submit();
-
       setTimeout(function () {
         location.href = "/upworth" + window.location.search + "&domain=" + domainSelected + "&workexp=" + expSelected + "&email=" + $('.email').val() + "&fname=" + $('.first-name').val() + "&lname=" + $('.last-name').val() + "&phone=" + $('.phone').val();
       }, 200);
