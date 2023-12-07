@@ -60,9 +60,10 @@ $(document).ready(function () {
         let resobj = JSON.parse(this.response);
         if (webinarType == "REGULAR") {
           resobj = resobj.map(item => ({ ...item, webinar_lead_type: "REGULAR" }));
-        } else {
-          resobj = resobj.map(item => ({ ...item, webinar_lead_type: "SWITCH_UP" }));
         }
+        // else {
+        //   resobj = resobj.map(item => ({ ...item, webinar_lead_type: "SWITCH_UP" }));
+        // }
         populateWebinarSlots(resobj);
       } else {
         console.error("P0: The Uplevel Webinar Slots API Failed.");
