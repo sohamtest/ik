@@ -1675,7 +1675,6 @@ $(document).ready(function () {
     //lead LeadCreatedTime
     const currentDateTime = new Date();
     const LeadCreatedTime = currentDateTime.toISOString().replace(/T/, ' ').replace(/\.\d+Z$/, ' UTC');
-    console.log(LeadCreatedTime);
     //convert UTC time format
     function formatDateTime(dateTimeString) {
       const date = new Date(dateTimeString);
@@ -1689,7 +1688,6 @@ $(document).ready(function () {
     }
     const formattedStartDateTime = formatDateTime($('.wr__event-start-time').val());
     const formattedEndDateTime = formatDateTime($('.wr__event-end-time').val());
-
     $.ajax({
       url: 'https://nlhtyrnugl.execute-api.us-west-1.amazonaws.com/prod',
       method: 'POST',
@@ -1748,8 +1746,6 @@ $(document).ready(function () {
   //lead LeadCreatedTime
   const currentDateTime = new Date();
   const LeadCreatedTime = currentDateTime.toISOString().replace(/T/, ' ').replace(/\.\d+Z$/, ' UTC');
-  console.log(LeadCreatedTime);
-
   setTimeout(() => {
     $.ajax({
       url: 'https://nlhtyrnugl.execute-api.us-west-1.amazonaws.com/prod',
