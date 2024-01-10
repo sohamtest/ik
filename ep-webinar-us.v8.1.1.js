@@ -1,8 +1,6 @@
 var experiment_type, exitintent_freecourse, v_timezone_formatted, interviewPrepURL, switchUpURL, hybrid;
-
 $(document).ready(function () {
   var int_phone3;
-
   $('.webinar-lightbox-close').click(function (e) {
     if (experiment_type == "ExitIntent") {
       $('.webinar__lightbox-card').css('display', 'none');
@@ -114,9 +112,7 @@ $(document).ready(function () {
 
 
   $.getJSON("https://get.geojs.io/v1/ip/geo.json", function (t) { }).done(function (t) {
-
     let forceUSwebinarFlag = getAllUrlParams();
-
     if ((t.country_code3 == "IND") && (forceUSwebinarFlag['forceuswebinar'] == undefined)) {
       TimerHandler('IST');
       createWebinarSlotsList("IND", t.timezone);
@@ -184,11 +180,8 @@ $(document).ready(function () {
   }
 
   function createWebinarSlotsList(country, timezone) {
-    console.log("webinarType: " + webinarType);
     v_timezone_formatted = timezone.replace("+", "%2B");
     webinarType = (webinarType == undefined || webinarType == "REGULAR") ? "REGULAR" : "SWITCH_UP";
-    console.log("webinarType4: " + webinarType);
-
     if (isSwitchUp == "No") {
       let api_url = "https://uplevel.interviewkickstart.com/api/webinar-slot/upcoming-slots/?country=" + country + "&program=Backend&timezone=" + v_timezone_formatted + "&type=" + webinarType;
       let xhr = new XMLHttpRequest();
@@ -229,27 +222,36 @@ $(document).ready(function () {
   }
 
   $('.tab-switchup').click(function () {
-    if (v_country == "India") {
+    var getUtmParam = getAllUrlParams();
+    if (v_timezone == "Asia/Kolkata" && !getUtmParam.forceuswebinar) {
       webinarType = "REGULAR";
     }
     else {
       webinarType = "SWITCH_UP";
     }
-    let slotscountrycode = (v_country == "India") ? "IND" : "USA";
+    if (v_country == "India" && !getUtmParam.forceuswebinar) {
+      slotscountrycode = "IND"
+    }
+    else {
+      slotscountrycode = "USA"
+    }
+
+    // let slotscountrycode = (v_country == "India") ? "IND" : "USA";
     $("html, body").animate({ scrollTop: 0 }, "slow");
     $('.webinar__slots').empty();
-    console.log("webinarType2" + webinarType);
     createWebinarSlotsList(slotscountrycode, v_timezone);
-
-    console.log(slotscountrycode, v_timezone)
+    // $(".webinar-type").val(webinarType)
   });
 
   $('.tab-regular').click(function () {
-    webinarType = "REGULAR";
+    webinarType = "REGULAR"
+    var getUtmParam = getAllUrlParams();
+    if (getUtmParam.forceuswebinar) {
+      webinarType = "REGULAR"
+    }
     let slotscountrycode = (v_country == "India") ? "IND" : "USA";
     $("html, body").animate({ scrollTop: 0 }, "slow");
     $('.webinar__slots').empty();
-    console.log("webinarType3" + webinarType);
     createWebinarSlotsList(slotscountrycode, v_timezone);
   });
 
@@ -286,7 +288,6 @@ $(document).ready(function () {
       }
       // Sort the combinedData array by start_time
       combinedData.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
-
       return combinedData;
     } catch (error) {
       console.error('Error:', error);
@@ -308,7 +309,6 @@ $(document).ready(function () {
       });
     }
   }
-
   $('.btn-back-to-step1').click(function (e) {
     $('.webinar__registration-form1').show();
     $('.webinar__registration-success').hide();
@@ -318,6 +318,12 @@ $(document).ready(function () {
 
   function pushToEndPoint(endpoint) {
     let eventName;
+    if (v_timezone_formatted == 'Asia/Kolkata') {
+      webinarType = "REGULAR";
+    } else {
+      webinarType == "SWITCH_UP"
+    }
+
     if (webinarType == "SWITCH_UP") {
       eventName = "Future-proof your career with AI/ ML, Data Science";
     } else if (webinarType == "CAREER_SESSION") {
@@ -332,24 +338,21 @@ $(document).ready(function () {
       "Email Address": $('.wr__email').val(),
       "ByeCalendlyType": $('.bye-calendly-type').val(),
       "webinar-type": $('.webinar-type').val(),
-      "Webinar Lead Type": $('.webinar-lead-type').val(),
+      "Webinar Lead Type": $('.webinar-type').val(),
       "utm_source": $('.utm_source').val(),
       "utm_medium": $('.utm_medium').val(),
       "utm_campaign": $('.utm_campaign').val(),
       "utm_content": $('.utm_content').val(),
       "utm_adset": $('.utm_adset').val(),
       "utm_term": $('.utm_term').val(),
-
       "City": $('.wr__city').val(),
       "Device": $('.wr__device').val(),
       "Referrer": $('.wr__referrer').val(),
       "Region": $('.wr__region').val(),
-
       "gclid": $('.gclid').val(),
       "msclkid": $('.msclkid').val(),
       "fbclid": $('.fbclid').val(),
       "user_id": $('.user_id').val(),
-
       "cta_page_url": $('.cta_page_url').val(),
       "landing_page_url": $('.l_page_url').val(),
       "event_name": eventName,
@@ -360,13 +363,11 @@ $(document).ready(function () {
       "salesforce_uuid": $('.salesforce_uuid').val(),
       "phone_number_full": $('.tno1').val(),
       "is_exit_intent_popup": $('.is_exit_intent_popup').val(),
-
       "Event Start Time": $('.wr__event-start-time').val(),
       "Event End Time": $('.wr__event-end-time').val(),
       "Invitee Start Time": $('.wr__invitee-start-time').val(),
       "Invitee End Time": $('.wr__invitee-end-time').val(),
     };
-
     $.ajax({
       type: "POST",
       url: endpoint,
@@ -440,11 +441,8 @@ $(document).ready(function () {
           'eventLabel': 'form submitted'
         });
       }
-
       pushToEndPoint("https://hooks.zapier.com/hooks/catch/11068981/34c9jjz/");
-
       //$('.webinar__registration-form1').submit();
-
       $('.webinar__registration-form1-block').hide();
       setTimeout(function () {
         $('.webinar__registration-form2-block').show();
@@ -672,7 +670,6 @@ $(document).ready(function () {
       $('.webinar__registration-form1-block-s2').show();
     }
   });
-
   $('.bc__upworth-step2').click(function (e) {
     e.preventDefault();
     setHiddenFields();
