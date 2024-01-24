@@ -346,5 +346,150 @@ $('.bc__btn-2nd-step').click(function (e) {
     setTimeout(function () {
       location.href = finalurl;
     }, 400);
+
+    let formData = {
+      firstName: $('.wr__firstname').val(),
+      lastName: $('.wr__lastname').val(),
+      email: $('.wr__email').val(),
+      phone: $('.wr__phone').val(),
+      city: $('.wr__city').val(),
+      device: $('.wr__device').val(),
+      region: $('.wr__region').val(),
+      referrer: $('.wr__referrer').val(),
+      site_url: $('.site_url').val(),
+      eventStartTime: $('.wr__event-start-time').val(),
+      eventEndTime: $('.wr__event-end-time').val(),
+      inviteeStartTime: $('.wr__invitee-start-time').val(),
+      inviteeEndTime: $('.wr__invitee-end-time').val(),
+      learnUserId: $('.user_id').val(),
+      event_name: $('input[name="Event Name"]').val(),
+      user_id: $(".user_timezone").val(),
+      cta_url: $('.cta_page_url').val(),
+      landing_page_url: $('.l_page_url').val(),
+    };
+    console.log(formData)
+    //lead LeadCreatedTime
+    const currentDateTime = new Date();
+    const LeadCreatedTime = currentDateTime.toISOString().replace(/T/, ' ').replace(/\.\d+Z$/, ' UTC');
+
+    //convert UTC time format
+    function formatDateTime(dateTimeString) {
+      const date = new Date(dateTimeString);
+      const year = date.getUTCFullYear();
+      const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+      const day = date.getUTCDate().toString().padStart(2, '0');
+      const hours = date.getUTCHours().toString().padStart(2, '0');
+      const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+      const seconds = date.getUTCSeconds().toString().padStart(2, '0');
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
+    }
+    const formattedStartDateTime = formatDateTime($('.wr__event-start-time').val());
+    const formattedEndDateTime = formatDateTime($('.wr__event-end-time').val());
+    let data = [{
+      "Lead_Created_Time": LeadCreatedTime,
+      "Lead_Name": formData.firstName + ' ' + formData.lastName,
+      "Lead_First_Name": formData.firstName,
+      "Lead_Last__Name": formData.lastName,
+      "Lead_Email": formData.email,
+      "Lead_Time_Zone": $(".user_timezone").val(),
+      "Event_Type_Name": $('input[name="Event Name"]').val(),
+      "Event_Start_Date_Time": formattedStartDateTime,
+      "Event_End_Date_Time": formattedEndDateTime,
+      "Cancellation_reason": "",
+      "Mobile": $('.wr__phone').val(),
+      "UTM_Campaign": $(".utm_campaign").val(),
+      "UTM_Source": $(".utm_source").val(),
+      "UTM_Medium": $(".utm_medium").val(),
+      "UTM_Term": $(".utm_term").val(),
+      "UTM_Content": $(".utm_content").val(),
+      "Tracking_ID": "",
+      "User_ID": $('.user_id').val(),
+      "Page_URL": $('.page_url').val(),
+      "Country": $(".v_country").val(),
+      "Client_Timezone": $(".user_timezone").val(),
+      "CTA_Page": $(".cta_page_url").val(),
+      "Landing_Page": formData.landing_page_url,
+      "Webinar_reg_type": $(".bye-calendly-type").val(),
+      "Webinar_Type": $(".webinar-type").val(),
+      "Switchup_Lead": $(".webinar-lead-type").val(),
+      "UUID": $(".salesforce_uuid").val(),
+      "Click_History": "",
+      "City": $(".wr__city").val(),
+      "Device": $(".wr__device").val(),
+      "Refferer": $(".wr__referrer").val(),
+      "Region": $(".wr__region").val()
+    }];
+
+    $.ajax({
+      url: 'https://nlhtyrnugl.execute-api.us-west-1.amazonaws.com/prod',
+      method: 'POST',
+      headers: {
+        'x-api-key': 'fm0X61U99b80d5SlGjrxFaWjgxIBylhX3LkfYGPN',
+        'Content-Type': 'application/json',
+      },
+
+      data: JSON.stringify({
+        dataset_id: "Marketing_data_new_logic",
+        table_id: "Leads_Click_history",
+        data: data,
+      }),
+      success: function (e) {
+        console.log("Success Response:", e);
+        console.log("Success Response:", data);
+      },
+      error: function (xhr, status, error) {
+        console.log("Error Response:", xhr.responseText);
+        console.log("Status:", status);
+        console.log("Error:", error);
+      }
+    });
   }
 });
+
+const currentDateTime = new Date();
+const LeadCreatedTime = currentDateTime.toISOString().replace(/T/, ' ').replace(/\.\d+Z$/, ' UTC');
+setTimeout(() => {
+  $.ajax({
+    url: 'https://nlhtyrnugl.execute-api.us-west-1.amazonaws.com/prod',
+    method: 'POST',
+    headers: {
+      'x-api-key': 'fm0X61U99b80d5SlGjrxFaWjgxIBylhX3LkfYGPN',
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      dataset_id: "Marketing_data_new_logic",
+      table_id: "Leads_Click_history",
+      data: [{
+        "Lead_Created_Time": LeadCreatedTime,
+        "Lead_Time_Zone": $(".user_timezone").val(),
+        "Event_Type_Name": $('input[name="Event Name"]').val(),
+        "Cancellation_reason": "",
+        "UTM_Campaign": $(".utm_campaign").val(),
+        "UTM_Source": $(".utm_source").val(),
+        "UTM_Medium": $(".utm_medium").val(),
+        "UTM_Term": $(".utm_term").val(),
+        "UTM_Content": $(".utm_content").val(),
+        "Tracking_ID": "",
+        "User_ID": $('.user_id').val(),
+        "Page_URL": $(".page_url").val(),
+        "Country": $(".v_country").val(),
+        "Client_Timezone": $(".user_timezone").val(),
+        "CTA_Page": $(".cta_page_url").val(),
+        "Landing_Page": $(".l_page_url").val(),
+        "Click_History": "",
+        "City": $(".wr__city").val(),
+        "Device": $(".wr__device").val(),
+        "Refferer": $(".wr__referrer").val(),
+        "Region": $(".wr__region").val()
+      }],
+    }),
+    success: function (e) {
+      console.log("Success Response:", e);
+    },
+    error: function (xhr, status, error) {
+      console.log("Error Response:", xhr.responseText);
+      console.log("Status:", status);
+      console.log("Error:", error);
+    }
+  });
+}, "1000");
